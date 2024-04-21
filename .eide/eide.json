@@ -336,16 +336,7 @@
         "name": "pack",
         "files": [
           {
-            "path": "MDK-ARM/USER/motor/command.c"
-          },
-          {
-            "path": "MDK-ARM/USER/motor/MOTOR_EXAMPLE.c"
-          },
-          {
-            "path": "MDK-ARM/USER/motor/motor.c"
-          },
-          {
-            "path": "MDK-ARM/USER/motor/priority_ui.c"
+            "path": "MDK-ARM/USER/pack/priority_ui.c"
           }
         ],
         "folders": []
@@ -354,19 +345,13 @@
         "name": "protocol",
         "files": [
           {
-            "path": "MDK-ARM/USER/protocol/can_protocol.c"
-          },
-          {
-            "path": "MDK-ARM/USER/protocol/communicate_protocol.c"
-          },
-          {
             "path": "MDK-ARM/USER/protocol/crc/crc.c"
           },
           {
             "path": "MDK-ARM/USER/protocol/judge_protocol.c"
           },
           {
-            "path": "MDK-ARM/USER/protocol/my_judge.c"
+            "path": "MDK-ARM/USER/protocol/ui_protocol.c"
           }
         ],
         "folders": []
@@ -569,20 +554,18 @@
           "Drivers/CMSIS/Include",
           "MDK-ARM/USER/drive",
           "MDK-ARM/USER/device",
-          "MDK-ARM/USER/device/Imu",
           "MDK-ARM/USER/Alog",
           "MDK-ARM/USER/Alog/support",
           "MDK-ARM/USER/config",
           "MDK-ARM/USER/control",
-          "MDK-ARM/USER/device/oled",
-          "MDK-ARM/USER/motor",
           "MDK-ARM/USER/my_task",
           "MDK-ARM/USER/protocol",
-          "MDK-ARM/USER/protocol/crc",
           "Drivers/CMSIS-DSP/Include",
           ".cmsis/include",
           "MDK-ARM/RTE/_MY_ENGINEER",
-          ".eide/deps"
+          ".eide/deps",
+          "MDK-ARM/USER/pack",
+          "MDK-ARM/USER/protocol/crc"
         ],
         "libList": [],
         "sourceDirList": [],

@@ -29,7 +29,7 @@
 
 /* Ŀ¼end */
 
-#include "my_judge.h"
+#include "ui_protocol.h"
 #include "crc.h"
 #include "string.h"
 #include "stdbool.h"

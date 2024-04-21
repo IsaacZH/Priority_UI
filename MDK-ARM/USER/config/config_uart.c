@@ -7,7 +7,6 @@
   */
 	
 #include "config_uart.h"
-#include "judge_protocol.h"
 
 
 
@@ -31,7 +30,7 @@ void USART3_rxDataHandler(uint8_t *rxBuf)
  */
 void USART4_rxDataHandler(uint8_t *rxBuf)
 {
-  judge_update(&judge,rxBuf);
+  
 }
 
 void USART5_rxDataHandler(uint8_t *rxBuf)

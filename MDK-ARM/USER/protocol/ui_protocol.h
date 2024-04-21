@@ -35,8 +35,8 @@
 
 /* 目录end */
 
-#ifndef RM__MY__JUDGE
-#define RM__MY__JUDGE
+#ifndef __UI_PROTOCOL_H
+#define __UI_PROTOCOL_H
 
 #include "main.h"
 #include "stdbool.h"
@@ -196,7 +196,6 @@ typedef struct
 
 /********************其他end********************/
 
-void tick_task(uint16_t time);
 void client_info_update(void);
 
 //画直线

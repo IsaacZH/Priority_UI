@@ -32,9 +32,6 @@
 /* USER CODE BEGIN Includes */
 #include "drv_can.h"
 #include "drv_uart.h"
-#include "bmi2_defs.h"
-#include "bmi.h"
-#include "device.h"
 #include "drive.h"
 #include "ui.h"
 

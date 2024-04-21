@@ -7,14 +7,11 @@
  */
 
 #include "judge_protocol.h"
-#include "communicate_protocol.h"
 #include "drv_uart.h"
 #include "drv_can.h"
 #include "string.h"
 #include "usart.h"
 #include "crc.h"
-#include "can.h"
-#include "cap.h"
 
 /**
  * @brief 判断自己是什么颜色->更新本方的ID->更新自己的ID
@@ -120,21 +117,9 @@ void judge_update(judge_t *judge,uint8_t *rxBuf)
 
 					case ID_game_robot_status:
 						memcpy(&judge->game_robot_status,rxBuf+7, judge->fream_header.data_length);		
-						Determine_ID();//更新机间交互的ID	
-						Game_Robot_Status_Tx();//发送机器人状态				
 					break;
 					case ID_power_heat_data:
 						memcpy(&judge->power_heat_data,rxBuf+7, judge->fream_header.data_length);
-						Power_Heat_Data_Tx();//发送功率热量数据
-						cap.setdata(&cap,
-							judge->power_heat_data.chassis_power_buffer,
-							judge->game_robot_status.chassis_power_limit,
-							judge->power_heat_data.chassis_volt,
-							judge->power_heat_data.chassis_current);
-						
-						CAN_HandleTypeDef *hcan = &hcan2;
-						CAN_Send_With_int16_to_uint8(hcan,0x2E, cap.info.Buff0x2E);
-
 						
 					break;
 					case ID_game_robot_pos:
@@ -151,7 +136,6 @@ void judge_update(judge_t *judge,uint8_t *rxBuf)
 					break;
 					case ID_shoot_data:
 						memcpy(&judge->shoot_data,rxBuf+7, judge->fream_header.data_length);
-						Shoot_Data_Tx();//发送射击数据
 					break;
 					case ID_bullet_remaining:
 						memcpy(&judge->bullet_remaining,rxBuf+7, judge->fream_header.data_length);

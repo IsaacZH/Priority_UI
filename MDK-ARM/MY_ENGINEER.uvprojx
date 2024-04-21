@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32F407xx,ARM_MATH_CM4,__FPU_PRESENT</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;../Middlewares/Third_Party/FreeRTOS/Source/include;../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS;../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F;../Drivers/CMSIS/Device/ST/STM32F4xx/Include;../Drivers/CMSIS/Include;./USER/drive;./USER/device;./USER/device/Imu;./USER/Alog;./USER/Alog/support;./USER/config;./USER/control;./USER/device/oled;./USER/motor;./USER/my_task;./USER/protocol;./USER/protocol/crc;../Drivers/CMSIS-DSP/Include</IncludePath>
+              <IncludePath>../Core/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;../Middlewares/Third_Party/FreeRTOS/Source/include;../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS;../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F;../Drivers/CMSIS/Device/ST/STM32F4xx/Include;../Drivers/CMSIS/Include;./USER/drive;./USER/device;./USER/device/Imu;./USER/Alog;./USER/Alog/support;./USER/config;./USER/control;./USER/device/oled;./USER/my_task;./USER/protocol;./USER/protocol/crc;../Drivers/CMSIS-DSP/Include;.\USER\pack</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -685,19 +685,9 @@
           <GroupName>pack</GroupName>
           <Files>
             <File>
-              <FileName>motor.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\USER\motor\motor.c</FilePath>
-            </File>
-            <File>
-              <FileName>MOTOR_EXAMPLE.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\USER\motor\MOTOR_EXAMPLE.c</FilePath>
-            </File>
-            <File>
               <FileName>priority_ui.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\USER\motor\priority_ui.c</FilePath>
+              <FilePath>.\USER\pack\priority_ui.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -705,40 +695,25 @@
           <GroupName>protocol</GroupName>
           <Files>
             <File>
-              <FileName>can_protocol.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\USER\protocol\can_protocol.c</FilePath>
-            </File>
-            <File>
-              <FileName>communicate_protocol.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\USER\protocol\communicate_protocol.c</FilePath>
-            </File>
-            <File>
               <FileName>judge_protocol.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\USER\protocol\judge_protocol.c</FilePath>
-            </File>
-            <File>
-              <FileName>my_judge.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\USER\protocol\my_judge.c</FilePath>
             </File>
             <File>
               <FileName>crc.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\USER\protocol\crc\crc.c</FilePath>
             </File>
+            <File>
+              <FileName>ui_protocol.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\USER\protocol\ui_protocol.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
           <GroupName>config</GroupName>
           <Files>
-            <File>
-              <FileName>config_can.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\USER\config\config_can.c</FilePath>
-            </File>
             <File>
               <FileName>config_uart.c</FileName>
               <FileType>1</FileType>
@@ -748,32 +723,10 @@
         </Group>
         <Group>
           <GroupName>device</GroupName>
-          <Files>
-            <File>
-              <FileName>device.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\USER\device\device.c</FilePath>
-            </File>
-            <File>
-              <FileName>cap.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\USER\device\cap.c</FilePath>
-            </File>
-            <File>
-              <FileName>chassis_motor.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\USER\device\chassis_motor.c</FilePath>
-            </File>
-          </Files>
         </Group>
         <Group>
           <GroupName>control</GroupName>
           <Files>
-            <File>
-              <FileName>chassis.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\USER\control\chassis.c</FilePath>
-            </File>
             <File>
               <FileName>ui.c</FileName>
               <FileType>1</FileType>
@@ -788,41 +741,6 @@
               <FileName>my_task.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\USER\my_task\my_task.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>imu</GroupName>
-          <Files>
-            <File>
-              <FileName>bmi.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\USER\device\Imu\bmi.c</FilePath>
-            </File>
-            <File>
-              <FileName>bmi2.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\USER\device\Imu\bmi2.c</FilePath>
-            </File>
-            <File>
-              <FileName>bmi270.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\USER\device\Imu\bmi270.c</FilePath>
-            </File>
-            <File>
-              <FileName>common.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\USER\device\Imu\common.c</FilePath>
-            </File>
-            <File>
-              <FileName>imu_protocol.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\USER\device\Imu\imu_protocol.c</FilePath>
-            </File>
-            <File>
-              <FileName>imu_sensor.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\USER\device\Imu\imu_sensor.c</FilePath>
             </File>
           </Files>
         </Group>

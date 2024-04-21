@@ -8,7 +8,6 @@
 
 #include "drv_can.h"
 #include "string.h"
-#include "config_can.h"
 #include "config.h"
 
 
