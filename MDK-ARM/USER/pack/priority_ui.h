@@ -130,7 +130,7 @@ typedef struct Node_u
 
 
 /* Exported functions --------------------------------------------------------*/
-void Init_Ui_List(ui_info_t *dynamic_ui_info, uint8_t dynamic_ui_num, ui_info_t *const_ui_info, uint8_t const_ui_num);
+ui_status_e Init_Ui_List(ui_info_t *dynamic_ui_info, uint8_t dynamic_ui_num, ui_info_t *const_ui_info, uint8_t const_ui_num);
 void Ui_Send();
 ui_status_e Enqueue_Ui_For_Sending(ui_info_t *ui_info);
 #endif

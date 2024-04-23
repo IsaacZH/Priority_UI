@@ -71,7 +71,7 @@ bool Init_Ui_Condition()
     /*UI强行发送ADD*/ui_status_e Ui_Send_Add();
 
 // 用户函数
-    /*初始化UI链表*/void Init_Ui_List(ui_info_t *dynamic_ui_info, uint8_t dynamic_ui_num, ui_info_t *const_ui_info, uint8_t const_ui_num);
+    /*初始化UI链表*/ui_status_e Init_Ui_List(ui_info_t *dynamic_ui_info, uint8_t dynamic_ui_num, ui_info_t *const_ui_info, uint8_t const_ui_num);
     /*UI发送函数*/void Ui_Send();
     /*添加对应UI到待发送*/ ui_status_e Enqueue_Ui_For_Sending(ui_info_t *ui_info);
 
@@ -724,14 +724,24 @@ ui_send_mode_e ui_send_mode; // 发送模式
  * @param const_ui_info 
  * @param const_ui_num 
  */
-void Init_Ui_List(ui_info_t *dynamic_ui_info, uint8_t dynamic_ui_num, ui_info_t *const_ui_info, uint8_t const_ui_num)
+ui_status_e Init_Ui_List(ui_info_t *dynamic_ui_info, uint8_t dynamic_ui_num, ui_info_t *const_ui_info, uint8_t const_ui_num)
 {
+  ui_status_e res1,res2,res3;
   // 初始化动态UI链表
-  Init_Priority_LinkedList(&dynamic_list_head, dynamic_ui_info, dynamic_ui_num);
+  res1 = Init_Priority_LinkedList(&dynamic_list_head, dynamic_ui_info, dynamic_ui_num);
   // 初始化不变UI链表
-  Init_Priority_LinkedList(&const_list_head, const_ui_info, const_ui_num);
+  res2 = Init_Priority_LinkedList(&const_list_head, const_ui_info, const_ui_num);
   // 初始化两个链表，将dynamic_ui_info和const_ui_info两个数组中不是CHAR类型的UI存进其中一个链表，其他类型的UI存进另一个链表
-  Init_Type_LinkedLists(&graphic_list_head, &char_list_head, dynamic_ui_info, const_ui_info, dynamic_ui_num, const_ui_num);
+  res3 = Init_Type_LinkedLists(&graphic_list_head, &char_list_head, dynamic_ui_info, const_ui_info, dynamic_ui_num, const_ui_num);
+
+  if (res1*res2*res3 == UI_ERROR)
+  {
+    return UI_ERROR;
+  }
+  else
+  {
+    return UI_OK;
+  }
 }
 
 /**
