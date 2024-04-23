@@ -131,7 +131,9 @@
       - operate_type（操作类型）配置提示：
         - 对于不变UI，可以不配置operate_type
         - 对于一直要显示的动态UI：operate_type = MODIFY
-        - 对于会进行删除操作的动态UI：operate_type = DELETE,这样才初始化UI时，才不会给这类UI发ADD，需要用户通过后续更新UI时发送ADD
+        - 对于会进行删除操作的动态UI：operate_type = DELETE
+          
+          这样初始化UI时，才不会给这类UI发ADD，需要用户通过后续更新UI时发送ADD
 
       ```C
       //存储动态UI信息
@@ -170,7 +172,7 @@
       ```C
       void My_Ui_Init(void)
       {
-      Init_Ui_List(dynamic_ui_info, sizeof(dynamic_ui_info)/sizeof       (ui_info_t),  const_ui_info, sizeof(const_ui_info)/sizeof(ui_info_t));
+      Init_Ui_List(dynamic_ui_info, sizeof(dynamic_ui_info)/sizeof(ui_info_t),  const_ui_info, sizeof(const_ui_info)/sizeof(ui_info_t));
       }
       ```
 
