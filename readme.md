@@ -12,6 +12,7 @@
   - [配置 priority_ui.c](#配置-priority_uic)
   - [配置 ui.c](#配置-uic)
   - [确保Heap大小足够存放所有UI信息](#确保heap大小足够存放所有ui信息)
+- [UI配置示例](#附录) 
 
 ## 实现的功能
 - 通过优先级调度算法，管理每一个包要发送的UI内容。用户只需要初始化UI的信息，定义UI的优先级，并更行UI的内容，Priority_UI会自动调度UI的发送顺序。
@@ -46,14 +47,14 @@
   更改对应结构体的内容，然后调用更新UI函数来更新现在的发送状态和更新的Tick。 
 ## 移植方法
   - 需要移植的文件：
-    - <font color=DeepSkyBlue>ui_protocol.c</font> ----- UI的裁判系统协议文件
-    - <font color= Violet>ui_protocol.h</font>  
-    - <font color=DeepSkyBlue>priority_ui.c</font> ------ 优先级UI的实现文件
-    - <font color= Violet>priority_ui.h</font>
-    - <font color=DeepSkyBlue>ui.c</font> --------------- [示例应用代码] 定义UI信息，更新UI信息
-    - <font color= Violet>ui.h</font>
+    - <font color=#519aba>ui_protocol.c</font> ----- UI的裁判系统协议文件
+    - <font color= #a074c4>ui_protocol.h</font>  
+    - <font color=#519aba>priority_ui.c</font> ------ 优先级UI的实现文件
+    - <font color= #a074c4>priority_ui.h</font>
+    - <font color=#519aba>ui.c</font> --------------- [示例应用代码] 定义UI信息，更新UI信息
+    - <font color= #a074c4>ui.h</font>
     ***
-  - 配置 <font color=DeepSkyBlue>ui_protocol.c</font>
+  - 配置 <font color=#519aba>ui_protocol.c</font>
   1. 和裁判系统通信的串口
   
       ```C
@@ -80,7 +81,7 @@
       }
       ``` 
     	***
-  - **配置 <font color=DeepSkyBlue>priority_ui.c</font>** 
+  - **配置 <font color=#519aba>priority_ui.c</font>** 
   1. 高中低优先级的权重值
     
       ```C
@@ -107,7 +108,7 @@
   4. 每次初始化的次数
 
       ```C
-      #define PER_INIT_UI_TIMES    1   // 每次初始化的UI次数
+      #define PER_INIT_UI_TIMES  1   // 每次初始化的UI次数
       ```
 
   5. 定义初始化UI的条件的函数，在每次发送前会调用此函数，如果该函数返回true，则把所有UI发送<font color=CornflowerBlue>PER_INIT_UI_TIMES</font>次ADD，函数返回true则正常更新UI。
@@ -126,7 +127,7 @@
       }
       ```
     	***
-  - **配置 <font color=DeepSkyBlue>ui.c</font>**
+  - **配置 <font color=#519aba>ui.c</font>**
   1. 定义一个动态ui结构体和一个不变ui结构体配置初始UI信息
       - operate_type（操作类型）配置提示：
         - 对于不变UI，可以不配置operate_type
@@ -188,3 +189,5 @@
     - Heap的大小至少为上面所需大小的两倍，空间不够时申请内存就会失败，初始化链表函数会返回UI_ERROR  
     - 在CubeMX->Project Manger->Minimum Heap Size 中调整Heap大小
   
+# 附录
+ [UI配置示例](UI_Configuration_Example.md)
