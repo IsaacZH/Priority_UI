@@ -16,8 +16,11 @@
 #define MID_PRIORITY_WEIGHT  500  // 中优先级权重
 #define LOW_PRIORITY_WEIGHT  0    // 低优先级权重
 
-#define PER_INIT_UI_TIMES    1   // 每次初始化的UI次数
+#define HIGH_CHAR_PRIORITY_LEVEL 7  // 高优先级字符抢占图形UI的等级
+#define MID_CHAR_PRIORITY_LEVEL  5  // 中优先级字符抢占图形UI的等级
+
 #define SEND_INTERVAL        100 // 发送间隔时间(MS) [裁判系统上限是10HZ]
+#define PER_INIT_UI_TIMES    1   // 每次初始化的UI次数
 
 uint8_t send_test = 1;
 /**
@@ -402,7 +405,12 @@ ui_status_e Store_High_Priority_UI(Node_u* dynamic_list_head,Node_u* const_list_
   uint8_t graphic_cnt = 0;
   uint8_t buffer_size = 7;
   Node_u* dynamic_list_cursor = dynamic_list_head;
-  Node_u* const_list_cursor = const_list_head;
+  static Node_u* const_list_cursor = NULL;
+  if (const_list_cursor == NULL)
+  {
+    const_list_cursor = const_list_head;
+  }
+  
 
   if (dynamic_list_cursor == NULL && const_list_cursor == NULL)
   {
@@ -434,14 +442,25 @@ ui_status_e Store_High_Priority_UI(Node_u* dynamic_list_head,Node_u* const_list_
       }
       else if (dynamic_list_cursor->ui->ui_config.priority == HIGH_PRIORITY)//如果当前节点为字符且优先级为高
       {
-        character_priority_buffer = dynamic_list_cursor->ui;
-        dynamic_list_cursor->ui->sent_state = MESSAGE_SENT;
-        *ui_send_mode = SEND_CHAR_MODE;
-        return UI_OK;//发送字符
+        if (graphic_cnt <= HIGH_CHAR_PRIORITY_LEVEL)
+        {
+          //将之前存入的图形信息的发送状态变回未发送
+          dynamic_list_cursor = dynamic_list_head;
+          for (uint8_t i = 0; i < graphic_cnt && dynamic_list_cursor->next != NULL; i++)
+          {
+            dynamic_list_cursor->ui->sent_state = MESSAGE_NOT_SENT;
+            dynamic_list_cursor = dynamic_list_cursor->next;
+          }
+          //把要发送的字符信息存入buffer
+          character_priority_buffer = dynamic_list_cursor->ui;
+          dynamic_list_cursor->ui->sent_state = MESSAGE_SENT;
+          *ui_send_mode = SEND_CHAR_MODE;
+          return UI_OK;//发送字符
+        }
       }
       else if (dynamic_list_cursor->ui->ui_config.priority == MID_PRIORITY)//如果当前节点为字符且优先级为中
       {
-        if (graphic_cnt <= 5)//存入图形buffer的个数小于5就发送字符
+        if (graphic_cnt <= MID_CHAR_PRIORITY_LEVEL)//存入图形buffer的个数小于5就发送字符
         {
           //将之前存入的图形信息的发送状态变回未发送
           dynamic_list_cursor = dynamic_list_head;
@@ -480,6 +499,7 @@ ui_status_e Store_High_Priority_UI(Node_u* dynamic_list_head,Node_u* const_list_
       //如果下一个节点为空，退出循环
       if(const_list_cursor->next == NULL)
       {
+        const_list_cursor = const_list_head;
         break;
       }
       const_list_cursor = const_list_cursor->next;//指向下一个节点

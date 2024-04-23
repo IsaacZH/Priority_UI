@@ -48,6 +48,10 @@ client_info_t client_info =
 };
 uint8_t client_tx_buf[128];
 
+/**
+ * @brief 更新红蓝方机器人信息，在裁判系统接受中断中调用
+ * 
+ */
 void client_info_update(void)
 {
 	switch(judge.game_robot_status.robot_id)

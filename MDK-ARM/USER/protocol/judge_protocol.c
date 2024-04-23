@@ -7,6 +7,7 @@
  */
 
 #include "judge_protocol.h"
+#include "ui_protocol.h"
 #include "drv_uart.h"
 #include "drv_can.h"
 #include "string.h"
@@ -116,7 +117,9 @@ void judge_update(judge_t *judge,uint8_t *rxBuf)
 					break;
 
 					case ID_game_robot_status:
-						memcpy(&judge->game_robot_status,rxBuf+7, judge->fream_header.data_length);		
+						memcpy(&judge->game_robot_status,rxBuf+7, judge->fream_header.data_length);
+						Determine_ID();	
+						client_info_update();	
 					break;
 					case ID_power_heat_data:
 						memcpy(&judge->power_heat_data,rxBuf+7, judge->fream_header.data_length);
