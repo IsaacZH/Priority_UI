@@ -54,12 +54,12 @@
     - <font color= Violet>ui.h</font>
     ***
   - 配置 <font color=DeepSkyBlue>ui_protocol.c</font>
-    - 和裁判系统通信的串口
+  1. 和裁判系统通信的串口
   
       ```C
       #define UI_huart huart4
       ``` 
-    - 判断红蓝发配置id
+  2. 判断红蓝发配置id
       
       ```C
       void client_info_update(void)
@@ -79,38 +79,38 @@
       	}
       }
       ``` 
-    ***
+    	***
   - **配置 <font color=DeepSkyBlue>priority_ui.c</font>** 
-    1. 高中低优先级的权重值
+  1. 高中低优先级的权重值
     
       ```C
       #define HIGH_PRIORITY_WEIGHT 1000 // 高优先级权重
       #define MID_PRIORITY_WEIGHT  500  // 中优先级权重
       #define LOW_PRIORITY_WEIGHT  0    // 低优先级权重
       ```
-    $\qquad$在此示例配置下，中优先级UI被阻塞500ms后优先级值就会高于高先级UI的优先级值，低优先级同理。
+  $\qquad$在此示例配置下，中优先级UI被阻塞500ms后优先级值就会高于高先级UI的优先级值，低优先级同理。
 
-    2. 字符抢占图形的排位
+  2. 字符抢占图形的排位
  
       ```C
       #define HIGH_CHAR_PRIORITY_LEVEL 7  // 高优先级字符抢图形UI的等级
       #define MID_CHAR_PRIORITY_LEVEL  5  // 中优先级字符抢图形UI的等级
       ```
-    $\qquad$在此示例配置下，当动态UI链表的前7位有高优先级的字符UI时，本次发送字符UI，当动态UI链表的前5位有中优先级的字符UI时，本次发送字符UI。其他时候发送图形UI。
+  $\qquad$在此示例配置下，当动态UI链表的前7位有高优先级的字符UI时，本次发送字符UI，当动态UI链表的前5位有中优先级的字符UI时，本次发送字符UI。其他时候发送图形UI。
 
-    3. 发送间隔时间(MS)
+  3. 发送间隔时间(MS)
 
       ```C
       #define SEND_INTERVAL  100 // 100ms发一次
       ```
 
-    4. 每次初始化的次数
+  4. 每次初始化的次数
 
       ```C
       #define PER_INIT_UI_TIMES    1   // 每次初始化的UI次数
       ```
 
-    5. 定义初始化UI的条件的函数，在每次发送前会调用此函数，如果该函数返回true，则把所有UI发送<font color=CornflowerBlue>PER_INIT_UI_TIMES</font>次ADD，函数返回true则正常更新UI。
+  5. 定义初始化UI的条件的函数，在每次发送前会调用此函数，如果该函数返回true，则把所有UI发送<font color=CornflowerBlue>PER_INIT_UI_TIMES</font>次ADD，函数返回true则正常更新UI。
   
       ```C
       bool Init_Ui_Condition()
@@ -125,7 +125,7 @@
         }
       }
       ```
-    ***
+    	***
   - **配置 <font color=DeepSkyBlue>ui.c</font>**
   1. 定义一个动态ui结构体和一个不变ui结构体配置初始UI信息
       - operate_type（操作类型）配置提示：
