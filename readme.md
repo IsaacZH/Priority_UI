@@ -67,22 +67,27 @@
       {
       	switch(judge.game_robot_status.robot_id)
       	{
-      		case 1:
-      			client_info.robot_id = 1;
+      	  case 1:
+      		  client_info.robot_id = 1;
       		  client_info.client_id = 0x0101;
-      			break;
+      		  break;
       		case 101:
-      			client_info.robot_id = 101;
+      		  client_info.robot_id = 101;
       		  client_info.client_id = 0x0165;
-      			break;
-      		default:
-      			break;
+      		  break;
+      	  default:
+      		  break;
       	}
       }
       ``` 
     	***
   - **配置 <font color=#519aba>priority_ui.c</font>** 
-  1. 高中低优先级的权重值
+  1. 使能自动命名功能（可选）：如果你不想自己配置图形名称，可以在此处使能自动命名功能。
+  
+      ```C
+      #define AUTO_UI_NAME_ENABLE  // 自动命名
+      ```
+  2. 高中低优先级的权重值
     
       ```C
       #define HIGH_PRIORITY_WEIGHT 1000 // 高优先级权重
@@ -91,7 +96,7 @@
       ```
   $\qquad$在此示例配置下，中优先级UI被阻塞500ms后优先级值就会高于高先级UI的优先级值，低优先级同理。
 
-  2. 字符抢占图形的排位
+  3. 字符抢占图形的排位
  
       ```C
       #define HIGH_CHAR_PRIORITY_LEVEL 7  // 高优先级字符抢图形UI的等级
@@ -99,19 +104,19 @@
       ```
   $\qquad$在此示例配置下，当动态UI链表的前7位有高优先级的字符UI时，本次发送字符UI，当动态UI链表的前5位有中优先级的字符UI时，本次发送字符UI。其他时候发送图形UI。
 
-  3. 发送间隔时间(MS)
+  4. 发送间隔时间(MS)
 
       ```C
       #define SEND_INTERVAL  100 // 100ms发一次
       ```
 
-  4. 每次初始化的次数
+  5. 每次初始化的次数
 
       ```C
       #define PER_INIT_UI_TIMES  1   // 每次初始化的UI次数
       ```
 
-  5. 定义初始化UI的条件的函数，在每次发送前会调用此函数，如果该函数返回true，则把所有UI发送<font color=CornflowerBlue>PER_INIT_UI_TIMES</font>次ADD，函数返回true则正常更新UI。
+  6. 定义初始化UI的条件的函数，在每次发送前会调用此函数，如果该函数返回true，则把所有UI发送<font color=CornflowerBlue>PER_INIT_UI_TIMES</font>次ADD，函数返回true则正常更新UI。
   
       ```C
       bool Init_Ui_Condition()
@@ -135,7 +140,8 @@
         - 对于会进行删除操作的动态UI：operate_type = DELETE
           
           这样初始化UI时，才不会给这类UI发ADD，需要用户通过后续更新UI时发送ADD
-
+      - 图形名称说明：
+        - 如果你不想自己配置图形名称，可以在<font color=#519aba>priority_ui.c</font>的宏定义中使能自动命名功能
       ```C
       //存储动态UI信息
        ui_info_t dynamic_ui_info [] = 
@@ -168,7 +174,7 @@
        };
       ```
 
-2. 初始化链表，可以在main.c中调用这个函数
+1. 初始化链表，可以在main.c中调用这个函数
   
       ```C
       void My_Ui_Init(void)
@@ -177,7 +183,7 @@
       }
       ```
 
-3. 更新UI数据，将UI设为准备发送
+2. 更新UI数据，将UI设为准备发送
   
       ```C
       Enqueue_Ui_For_Sending(&dynamic_ui_info[/*所更新的UI*/]); 

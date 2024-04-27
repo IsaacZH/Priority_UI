@@ -7,7 +7,7 @@ void rotate(uint16_t *x, uint16_t *y, float mid_x, float mid_y, float angle);
 void rotate_arc(ui_config_t *config, float mid_x, float mid_y, float angle);
 void Spin_Rp_Ui(void);
 
-ui_info_t dynamic_ui_info [] = 
+ui_info_t dynamic_ui_info [DYNAMIC_UI_NUM] = 
 {
     [RP_1] = {
     /*******不变配置*********/
@@ -203,9 +203,10 @@ ui_info_t dynamic_ui_info [] =
     .ui_config.start_y = Client_mid_position_y + 75,              // 起点 y 坐标
     .ui_config.int_num = 0,              // 显示的数字
   },
+  
 };
 
-ui_info_t const_ui_info [] = 
+ui_info_t const_ui_info [3] = 
 {
   [0] = {
     /*******不变配置*********/

@@ -19,6 +19,7 @@ typedef enum{
 	TOP_MODE_CYCLE_2,
 	NUM,
 	
+	DYNAMIC_UI_NUM,
 }dynamic_ui_cnt_e;
 
 
