@@ -42,8 +42,8 @@
 #include "stdbool.h"
 
 //1920*1080
-#define Client_mid_position_x 960
-#define Client_mid_position_y 540
+#define CLIENT_MID_POSITION_X 960
+#define CLIENT_MID_POSITION_Y 540
 
 /********************裁判系统帧结构begin********************/
 

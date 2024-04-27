@@ -18,10 +18,10 @@ ui_info_t dynamic_ui_info [DYNAMIC_UI_NUM] =
     .ui_config.layer = 1,                // 图层数，0~9
     .ui_config.color = GREEN,            // 颜色
     .ui_config.width = 3,                // 线条宽度
-    .ui_config.start_x = Client_mid_position_x - 352,              // 起点 x 坐标
-    .ui_config.start_y = Client_mid_position_y + 0,              // 起点 y 坐标
-    .ui_config.end_x = Client_mid_position_x - 176,                // 终点 x 坐标
-    .ui_config.end_y = Client_mid_position_y + 305,                // 终点 y 坐标
+    .ui_config.start_x = CLIENT_MID_POSITION_X - 352,              // 起点 x 坐标
+    .ui_config.start_y = CLIENT_MID_POSITION_Y + 0,              // 起点 y 坐标
+    .ui_config.end_x = CLIENT_MID_POSITION_X - 176,                // 终点 x 坐标
+    .ui_config.end_y = CLIENT_MID_POSITION_Y + 305,                // 终点 y 坐标
   },
     [RP_2] = {
     /*******不变配置*********/
@@ -32,10 +32,10 @@ ui_info_t dynamic_ui_info [DYNAMIC_UI_NUM] =
     .ui_config.layer = 1,                // 图层数，0~9
     .ui_config.color = GREEN,            // 颜色
     .ui_config.width = 3,                // 线条宽度
-    .ui_config.start_x = Client_mid_position_x - 176,              // 起点 x 坐标
-    .ui_config.start_y = Client_mid_position_y + 305,              // 起点 y 坐标
-    .ui_config.end_x = Client_mid_position_x + 176,                // 终点 x 坐标
-    .ui_config.end_y = Client_mid_position_y + 305,                // 终点 y 坐标
+    .ui_config.start_x = CLIENT_MID_POSITION_X - 176,              // 起点 x 坐标
+    .ui_config.start_y = CLIENT_MID_POSITION_Y + 305,              // 起点 y 坐标
+    .ui_config.end_x = CLIENT_MID_POSITION_X + 176,                // 终点 x 坐标
+    .ui_config.end_y = CLIENT_MID_POSITION_Y + 305,                // 终点 y 坐标
   },
     [RP_3] = {
     /*******不变配置*********/
@@ -46,10 +46,10 @@ ui_info_t dynamic_ui_info [DYNAMIC_UI_NUM] =
     .ui_config.layer = 1,                // 图层数，0~9
     .ui_config.color = GREEN,            // 颜色
     .ui_config.width = 3,                // 线条宽度
-    .ui_config.start_x = Client_mid_position_x + 352,              // 起点 x 坐标
-    .ui_config.start_y = Client_mid_position_y + 0,              // 起点 y 坐标
-    .ui_config.end_x = Client_mid_position_x + 176,                // 终点 x 坐标
-    .ui_config.end_y = Client_mid_position_y + 305,                // 终点 y 坐标
+    .ui_config.start_x = CLIENT_MID_POSITION_X + 352,              // 起点 x 坐标
+    .ui_config.start_y = CLIENT_MID_POSITION_Y + 0,              // 起点 y 坐标
+    .ui_config.end_x = CLIENT_MID_POSITION_X + 176,                // 终点 x 坐标
+    .ui_config.end_y = CLIENT_MID_POSITION_Y + 305,                // 终点 y 坐标
   },
     [RP_4] = {
     /*******不变配置*********/
@@ -60,10 +60,10 @@ ui_info_t dynamic_ui_info [DYNAMIC_UI_NUM] =
     .ui_config.layer = 1,                // 图层数，0~9
     .ui_config.color = GREEN,            // 颜色
     .ui_config.width = 3,                // 线条宽度
-    .ui_config.start_x = Client_mid_position_x + 352,              // 起点 x 坐标
-    .ui_config.start_y = Client_mid_position_y + 0,              // 起点 y 坐标
-    .ui_config.end_x = Client_mid_position_x + 176,                // 终点 x 坐标
-    .ui_config.end_y = Client_mid_position_y - 305,                // 终点 y 坐标
+    .ui_config.start_x = CLIENT_MID_POSITION_X + 352,              // 起点 x 坐标
+    .ui_config.start_y = CLIENT_MID_POSITION_Y + 0,              // 起点 y 坐标
+    .ui_config.end_x = CLIENT_MID_POSITION_X + 176,                // 终点 x 坐标
+    .ui_config.end_y = CLIENT_MID_POSITION_Y - 305,                // 终点 y 坐标
   },
     [RP_5] = {
     /*******不变配置*********/
@@ -74,10 +74,10 @@ ui_info_t dynamic_ui_info [DYNAMIC_UI_NUM] =
     .ui_config.layer = 1,                // 图层数，0~9
     .ui_config.color = GREEN,            // 颜色
     .ui_config.width = 3,                // 线条宽度
-    .ui_config.start_x = Client_mid_position_x + 58,              // 起点 x 坐标
-    .ui_config.start_y = Client_mid_position_y - 305,              // 起点 y 坐标
-    .ui_config.end_x = Client_mid_position_x + 176,                // 终点 x 坐标
-    .ui_config.end_y = Client_mid_position_y - 305,                // 终点 y 坐标
+    .ui_config.start_x = CLIENT_MID_POSITION_X + 58,              // 起点 x 坐标
+    .ui_config.start_y = CLIENT_MID_POSITION_Y - 305,              // 起点 y 坐标
+    .ui_config.end_x = CLIENT_MID_POSITION_X + 176,                // 终点 x 坐标
+    .ui_config.end_y = CLIENT_MID_POSITION_Y - 305,                // 终点 y 坐标
   },
     [RP_6] = {
     /*******不变配置*********/
@@ -88,10 +88,10 @@ ui_info_t dynamic_ui_info [DYNAMIC_UI_NUM] =
     .ui_config.layer = 1,                // 图层数，0~9
     .ui_config.color = GREEN,            // 颜色
     .ui_config.width = 3,                // 线条宽度
-    .ui_config.start_x = Client_mid_position_x + 58,              // 起点 x 坐标
-    .ui_config.start_y = Client_mid_position_y - 305,              // 起点 y 坐标
-    .ui_config.end_x = Client_mid_position_x - 4,                // 终点 x 坐标
-    .ui_config.end_y = Client_mid_position_y - 153,                // 终点 y 坐标
+    .ui_config.start_x = CLIENT_MID_POSITION_X + 58,              // 起点 x 坐标
+    .ui_config.start_y = CLIENT_MID_POSITION_Y - 305,              // 起点 y 坐标
+    .ui_config.end_x = CLIENT_MID_POSITION_X - 4,                // 终点 x 坐标
+    .ui_config.end_y = CLIENT_MID_POSITION_Y - 153,                // 终点 y 坐标
   },
     [RP_7] = {
     /*******不变配置*********/
@@ -102,10 +102,10 @@ ui_info_t dynamic_ui_info [DYNAMIC_UI_NUM] =
     .ui_config.layer = 1,                // 图层数，0~9
     .ui_config.color = GREEN,            // 颜色
     .ui_config.width = 3,                // 线条宽度
-    .ui_config.start_x = Client_mid_position_x - 49,              // 起点 x 坐标
-    .ui_config.start_y = Client_mid_position_y + 145,              // 起点 y 坐标
-    .ui_config.end_x = Client_mid_position_x - 249,                // 终点 x 坐标
-    .ui_config.end_y = Client_mid_position_y - 179,                // 终点 y 坐标
+    .ui_config.start_x = CLIENT_MID_POSITION_X - 49,              // 起点 x 坐标
+    .ui_config.start_y = CLIENT_MID_POSITION_Y + 145,              // 起点 y 坐标
+    .ui_config.end_x = CLIENT_MID_POSITION_X - 249,                // 终点 x 坐标
+    .ui_config.end_y = CLIENT_MID_POSITION_Y - 179,                // 终点 y 坐标
   },
     [RP_8] = {
     /*******不变配置*********/
@@ -116,10 +116,10 @@ ui_info_t dynamic_ui_info [DYNAMIC_UI_NUM] =
     .ui_config.layer = 1,                // 图层数，0~9
     .ui_config.color = GREEN,            // 颜色
     .ui_config.width = 3,                // 线条宽度
-    .ui_config.start_x = Client_mid_position_x - 352,              // 起点 x 坐标
-    .ui_config.start_y = Client_mid_position_y + 0,              // 起点 y 坐标
-    .ui_config.end_x = Client_mid_position_x - 249,                // 终点 x 坐标
-    .ui_config.end_y = Client_mid_position_y - 179,                // 终点 y 坐标
+    .ui_config.start_x = CLIENT_MID_POSITION_X - 352,              // 起点 x 坐标
+    .ui_config.start_y = CLIENT_MID_POSITION_Y + 0,              // 起点 y 坐标
+    .ui_config.end_x = CLIENT_MID_POSITION_X - 249,                // 终点 x 坐标
+    .ui_config.end_y = CLIENT_MID_POSITION_Y - 179,                // 终点 y 坐标
   },
     [RP_9] = {
     /*******不变配置*********/
@@ -130,8 +130,8 @@ ui_info_t dynamic_ui_info [DYNAMIC_UI_NUM] =
     .ui_config.layer = 1,                // 图层数，0~9
     .ui_config.color = GREEN,            // 颜色
     .ui_config.width = 3,                // 线条宽度
-    .ui_config.start_x = Client_mid_position_x,              // 圆心 x 坐标
-    .ui_config.start_y = Client_mid_position_y,              // 圆心 y 坐标
+    .ui_config.start_x = CLIENT_MID_POSITION_X,              // 圆心 x 坐标
+    .ui_config.start_y = CLIENT_MID_POSITION_Y,              // 圆心 y 坐标
     .ui_config.end_x = 154,                // x 半轴长度
     .ui_config.end_y = 154,                // y 半轴长度
     .ui_config.start_angel = 360 - 2,          // 起始角度
@@ -146,8 +146,8 @@ ui_info_t dynamic_ui_info [DYNAMIC_UI_NUM] =
     .ui_config.layer = 1,                // 图层数，0~9
     .ui_config.color = GREEN,            // 颜色
     .ui_config.width = 2,                // 线条宽度
-    .ui_config.start_x = Client_mid_position_x - 610,              // 圆心 x 坐标
-    .ui_config.start_y = Client_mid_position_y + 131,              // 圆心 y 坐标
+    .ui_config.start_x = CLIENT_MID_POSITION_X - 610,              // 圆心 x 坐标
+    .ui_config.start_y = CLIENT_MID_POSITION_Y + 131,              // 圆心 y 坐标
     .ui_config.radius = 13,               // 半径
   },
   [VISION_CYCLE_2] = {
@@ -159,8 +159,8 @@ ui_info_t dynamic_ui_info [DYNAMIC_UI_NUM] =
     .ui_config.layer = 1,                // 图层数，0~9
     .ui_config.color = GREEN,            // 颜色
     .ui_config.width = 2,                // 线条宽度
-    .ui_config.start_x = Client_mid_position_x - 610,              // 圆心 x 坐标
-    .ui_config.start_y = Client_mid_position_y + 131,              // 圆心 y 坐标
+    .ui_config.start_x = CLIENT_MID_POSITION_X - 610,              // 圆心 x 坐标
+    .ui_config.start_y = CLIENT_MID_POSITION_Y + 131,              // 圆心 y 坐标
     .ui_config.radius = 22,               // 半径
   },
   [TOP_MODE_CYCLE_1] = {
@@ -172,8 +172,8 @@ ui_info_t dynamic_ui_info [DYNAMIC_UI_NUM] =
     .ui_config.layer = 1,                // 图层数，0~9
     .ui_config.color = GREEN,            // 颜色
     .ui_config.width = 2,                // 线条宽度
-    .ui_config.start_x = Client_mid_position_x - 610,              // 圆心 x 坐标
-    .ui_config.start_y = Client_mid_position_y + 75,              // 圆心 y 坐标
+    .ui_config.start_x = CLIENT_MID_POSITION_X - 610,              // 圆心 x 坐标
+    .ui_config.start_y = CLIENT_MID_POSITION_Y + 75,              // 圆心 y 坐标
     .ui_config.radius = 13,               // 半径
   },
   [TOP_MODE_CYCLE_2] = {
@@ -185,8 +185,8 @@ ui_info_t dynamic_ui_info [DYNAMIC_UI_NUM] =
     .ui_config.layer = 1,                // 图层数，0~9
     .ui_config.color = GREEN,            // 颜色
     .ui_config.width = 2,                // 线条宽度
-    .ui_config.start_x = Client_mid_position_x - 610,              // 圆心 x 坐标
-    .ui_config.start_y = Client_mid_position_y + 75,              // 圆心 y 坐标
+    .ui_config.start_x = CLIENT_MID_POSITION_X - 610,              // 圆心 x 坐标
+    .ui_config.start_y = CLIENT_MID_POSITION_Y + 75,              // 圆心 y 坐标
     .ui_config.radius = 22,               // 半径
   },
   [NUM] = {
@@ -199,8 +199,8 @@ ui_info_t dynamic_ui_info [DYNAMIC_UI_NUM] =
     .ui_config.color = GREEN,            // 颜色
     .ui_config.size = 100,                // 字体大小
     .ui_config.width = 5,                // 线条宽度
-    .ui_config.start_x = Client_mid_position_x + 610,              // 起点 x 坐标
-    .ui_config.start_y = Client_mid_position_y + 75,              // 起点 y 坐标
+    .ui_config.start_x = CLIENT_MID_POSITION_X + 610,              // 起点 x 坐标
+    .ui_config.start_y = CLIENT_MID_POSITION_Y + 75,              // 起点 y 坐标
     .ui_config.int_num = 0,              // 显示的数字
   },
   
@@ -216,8 +216,8 @@ ui_info_t const_ui_info [3] =
     .ui_config.color = GREEN,            // 颜色
     .ui_config.size = 20,                // 字体大小
     .ui_config.width = 2,                // 线条宽度
-    .ui_config.start_x = Client_mid_position_x + 200,              // 起点 x 坐标
-    .ui_config.start_y = Client_mid_position_y + 84,              // 起点 y 坐标
+    .ui_config.start_x = CLIENT_MID_POSITION_X + 200,              // 起点 x 坐标
+    .ui_config.start_y = CLIENT_MID_POSITION_Y + 84,              // 起点 y 坐标
     .ui_config.text = "LOL",            // 显示的文字
   },
   
@@ -373,11 +373,11 @@ void rotate_arc(ui_config_t *config, float mid_x, float mid_y, float angle) {
 // 更新UI信息
 void spin_angle(float angle) {
   for (int i = 0; i < 8; i++) {
-    rotate(&dynamic_ui_info[i].ui_config.start_x, &dynamic_ui_info[i].ui_config.start_y, Client_mid_position_x, Client_mid_position_y, angle);
-    rotate(&dynamic_ui_info[i].ui_config.end_x, &dynamic_ui_info[i].ui_config.end_y, Client_mid_position_x, Client_mid_position_y, angle);
+    rotate(&dynamic_ui_info[i].ui_config.start_x, &dynamic_ui_info[i].ui_config.start_y, CLIENT_MID_POSITION_X, CLIENT_MID_POSITION_Y, angle);
+    rotate(&dynamic_ui_info[i].ui_config.end_x, &dynamic_ui_info[i].ui_config.end_y, CLIENT_MID_POSITION_X, CLIENT_MID_POSITION_Y, angle);
     Enqueue_Ui_For_Sending(&dynamic_ui_info[i]);
   }
- rotate_arc(&dynamic_ui_info[RP_9].ui_config, Client_mid_position_x, Client_mid_position_y, angle);
+ rotate_arc(&dynamic_ui_info[RP_9].ui_config, CLIENT_MID_POSITION_X, CLIENT_MID_POSITION_Y, angle);
  Enqueue_Ui_For_Sending(&dynamic_ui_info[RP_9]);
 }
 uint16_t test_spin_fre = 10;
