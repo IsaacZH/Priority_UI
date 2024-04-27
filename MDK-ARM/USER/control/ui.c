@@ -13,7 +13,6 @@ ui_info_t dynamic_ui_info [] =
     /*******不变配置*********/
     .ui_config.priority = MID_PRIORITY, // UI优先级(仅动态UI需要配置)
     .ui_config.ui_type = LINE,         // UI内容类型
-    .ui_config.name = "g1",              // 图形名称
     /*******可变配置*********/
     .ui_config.operate_type = MODIFY,    // 操作类型
     .ui_config.layer = 1,                // 图层数，0~9
@@ -28,7 +27,6 @@ ui_info_t dynamic_ui_info [] =
     /*******不变配置*********/
     .ui_config.priority = MID_PRIORITY, // UI优先级(仅动态UI需要配置)
     .ui_config.ui_type = LINE,         // UI内容类型
-    .ui_config.name = "g2",              // 图形名称
     /*******可变配置*********/
     .ui_config.operate_type = MODIFY,    // 操作类型
     .ui_config.layer = 1,                // 图层数，0~9
@@ -43,7 +41,6 @@ ui_info_t dynamic_ui_info [] =
     /*******不变配置*********/
     .ui_config.priority = MID_PRIORITY, // UI优先级(仅动态UI需要配置)
     .ui_config.ui_type = LINE,         // UI内容类型
-    .ui_config.name = "g3",              // 图形名称
     /*******可变配置*********/
     .ui_config.operate_type = MODIFY,    // 操作类型
     .ui_config.layer = 1,                // 图层数，0~9
@@ -58,7 +55,6 @@ ui_info_t dynamic_ui_info [] =
     /*******不变配置*********/
     .ui_config.priority = MID_PRIORITY, // UI优先级(仅动态UI需要配置)
     .ui_config.ui_type = LINE,         // UI内容类型
-    .ui_config.name = "g4",              // 图形名称
     /*******可变配置*********/
     .ui_config.operate_type = MODIFY,    // 操作类型
     .ui_config.layer = 1,                // 图层数，0~9
@@ -73,7 +69,6 @@ ui_info_t dynamic_ui_info [] =
     /*******不变配置*********/
     .ui_config.priority = MID_PRIORITY, // UI优先级(仅动态UI需要配置)
     .ui_config.ui_type = LINE,         // UI内容类型
-    .ui_config.name = "g5",              // 图形名称
     /*******可变配置*********/
     .ui_config.operate_type = MODIFY,    // 操作类型
     .ui_config.layer = 1,                // 图层数，0~9
@@ -88,7 +83,6 @@ ui_info_t dynamic_ui_info [] =
     /*******不变配置*********/
     .ui_config.priority = MID_PRIORITY, // UI优先级(仅动态UI需要配置)
     .ui_config.ui_type = LINE,         // UI内容类型
-    .ui_config.name = "g6",              // 图形名称
     /*******可变配置*********/
     .ui_config.operate_type = MODIFY,    // 操作类型
     .ui_config.layer = 1,                // 图层数，0~9
@@ -103,7 +97,6 @@ ui_info_t dynamic_ui_info [] =
     /*******不变配置*********/
     .ui_config.priority = MID_PRIORITY, // UI优先级(仅动态UI需要配置)
     .ui_config.ui_type = LINE,         // UI内容类型
-    .ui_config.name = "g8",              // 图形名称
     /*******可变配置*********/
     .ui_config.operate_type = MODIFY,    // 操作类型
     .ui_config.layer = 1,                // 图层数，0~9
@@ -118,7 +111,6 @@ ui_info_t dynamic_ui_info [] =
     /*******不变配置*********/
     .ui_config.priority = MID_PRIORITY, // UI优先级(仅动态UI需要配置)
     .ui_config.ui_type = LINE,         // UI内容类型
-    .ui_config.name = "g9",              // 图形名称
     /*******可变配置*********/
     .ui_config.operate_type = MODIFY,    // 操作类型
     .ui_config.layer = 1,                // 图层数，0~9
@@ -133,7 +125,6 @@ ui_info_t dynamic_ui_info [] =
     /*******不变配置*********/
     .ui_config.priority = MID_PRIORITY, // UI优先级(仅动态UI需要配置)
     .ui_config.ui_type = ARC,         // UI内容类型
-    .ui_config.name = "g7",              // 图形名称
     /*******可变配置*********/
     .ui_config.operate_type = MODIFY,    // 操作类型
     .ui_config.layer = 1,                // 图层数，0~9
@@ -150,7 +141,6 @@ ui_info_t dynamic_ui_info [] =
     /*******不变配置*********/
     .ui_config.priority = HIGH_PRIORITY, // UI优先级(仅动态UI需要配置)
     .ui_config.ui_type = CIRCLE,         // UI内容类型
-    .ui_config.name = "g10",              // 图形名称
     /*******可变配置*********/
     .ui_config.operate_type = MODIFY,    // 操作类型
     .ui_config.layer = 1,                // 图层数，0~9
@@ -164,7 +154,6 @@ ui_info_t dynamic_ui_info [] =
     /*******不变配置*********/
     .ui_config.priority = HIGH_PRIORITY, // UI优先级(仅动态UI需要配置)
     .ui_config.ui_type = CIRCLE,         // UI内容类型
-    .ui_config.name = "g11",              // 图形名称
     /*******可变配置*********/
     .ui_config.operate_type = MODIFY,    // 操作类型
     .ui_config.layer = 1,                // 图层数，0~9
@@ -178,7 +167,6 @@ ui_info_t dynamic_ui_info [] =
     /*******不变配置*********/
     .ui_config.priority = HIGH_PRIORITY, // UI优先级(仅动态UI需要配置)
     .ui_config.ui_type = CIRCLE,         // UI内容类型
-    .ui_config.name = "g12",              // 图形名称
     /*******可变配置*********/
     .ui_config.operate_type = MODIFY,    // 操作类型
     .ui_config.layer = 1,                // 图层数，0~9
@@ -192,7 +180,6 @@ ui_info_t dynamic_ui_info [] =
     /*******不变配置*********/
     .ui_config.priority = HIGH_PRIORITY, // UI优先级(仅动态UI需要配置)
     .ui_config.ui_type = CIRCLE,         // UI内容类型
-    .ui_config.name = "g13",              // 图形名称
     /*******可变配置*********/
     .ui_config.operate_type = MODIFY,    // 操作类型
     .ui_config.layer = 1,                // 图层数，0~9
@@ -206,7 +193,6 @@ ui_info_t dynamic_ui_info [] =
     /*******不变配置*********/
     .ui_config.priority = HIGH_PRIORITY, // UI优先级(仅动态UI需要配置)
     .ui_config.ui_type = INT,            // UI内容类型
-    .ui_config.name = "g14",              // 图形名称
     /*******可变配置*********/
     .ui_config.operate_type = MODIFY,    // 操作类型
     .ui_config.layer = 0,                // 图层数，0~9
@@ -224,7 +210,6 @@ ui_info_t const_ui_info [] =
   [0] = {
     /*******不变配置*********/
     .ui_config.ui_type = CHAR,           // UI内容类型
-    .ui_config.name = "g20",              // 图形名称
     /*******可变配置*********/
     .ui_config.layer = 2,                // 图层数，0~9
     .ui_config.color = GREEN,            // 颜色
@@ -238,7 +223,6 @@ ui_info_t const_ui_info [] =
   [1] = {
     /*******不变配置*********/
     .ui_config.ui_type = LINE,         // UI内容类型
-    .ui_config.name = "g21",              // 图形名称
     /*******可变配置*********/
     .ui_config.layer = 3,                // 图层数，0~9
     .ui_config.color = GREEN,            // 颜色
@@ -252,7 +236,6 @@ ui_info_t const_ui_info [] =
   [2] = {
     /*******不变配置*********/
     .ui_config.ui_type = LINE,         // UI内容类型
-    .ui_config.name = "g22",              // 图形名称
     /*******可变配置*********/
     .ui_config.layer = 3,                // 图层数，0~9
     .ui_config.color = GREEN,            // 颜色

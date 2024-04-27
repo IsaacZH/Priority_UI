@@ -10,8 +10,11 @@
  */
 /* Includes ------------------------------------------------------------------*/
 #include "priority_ui.h"
-
+#include <stdio.h>
 /*用户配置区******************************************************************************************/
+/*功能---------------------------------------------------*/
+#define AUTO_UI_NAME_ENABLE  // 自动命名
+/*参数---------------------------------------------------*/
 #define HIGH_PRIORITY_WEIGHT 1000 // 高优先级权重
 #define MID_PRIORITY_WEIGHT  500  // 中优先级权重
 #define LOW_PRIORITY_WEIGHT  0    // 低优先级权重
@@ -315,6 +318,11 @@ ui_status_e Init_Type_LinkedLists(Node_u** graphic_link, Node_u** char_link, ui_
     }
     newNode->ui = dynamic_ptr;
     newNode->next = NULL;
+    //给当前UI命名
+    #ifdef AUTO_UI_NAME_ENABLE
+      char *name = dynamic_ptr->ui_config.name;
+      sprintf(name, "%d", i);
+    #endif
     //判断当前UI是否为CHAR类型
     if (dynamic_ptr->ui_config.ui_type != CHAR && dynamic_ptr->ui_config.operate_type != DELETE ) 
     {
@@ -360,6 +368,11 @@ ui_status_e Init_Type_LinkedLists(Node_u** graphic_link, Node_u** char_link, ui_
     }
     newNode->ui = const_ptr;
     newNode->next = NULL;
+    //给当前UI命名
+    #ifdef AUTO_UI_NAME_ENABLE
+      char *name = const_ptr->ui_config.name;
+      sprintf(name, "%d", i + dynamic_num + 1);
+    #endif
     //判断当前UI是否为CHAR类型
     if (const_ptr->ui_config.ui_type != CHAR && const_ptr->ui_config.operate_type != DELETE) 
     {

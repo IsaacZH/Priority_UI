@@ -82,7 +82,7 @@ typedef struct __packed {
   /*******不变配置*********/
   ui_priority_e priority;       // UI优先级(仅动态UI需要配置)
   ui_type_e ui_type;            // UI内容类型
-  char *name;                   // 图形名称
+  char name[3];             // 图形名称
 
   /*******可变配置*********/
 
