@@ -15,7 +15,7 @@
 - [UI配置示例](#附录) 
 
 ## 实现的功能
-- 通过优先级调度算法，管理每一个包要发送的UI内容。用户只需要初始化UI的信息，定义UI的优先级，并更行UI的内容，Priority_UI会自动调度UI的发送顺序。
+- 通过优先级调度算法，管理每一个包要发送的UI内容。用户只需要初始化UI的信息，定义UI的优先级，并更新UI的内容，Priority_UI会自动调度UI的发送顺序。
 ## 实现的方法
 - 初始化链表：
   - 把每个UI信息结构体的地址存入四个链表中：动态UI链表、不变UI链表、图形UI链表、字符UI链表
@@ -116,7 +116,7 @@
       #define PER_INIT_UI_TIMES  1   // 每次初始化的UI次数
       ```
 
-  6. 定义初始化UI的条件的函数，在每次发送前会调用此函数，如果该函数返回true，则把所有UI发送<font color=CornflowerBlue>PER_INIT_UI_TIMES</font>次ADD，函数返回true则正常更新UI。
+  6. 定义初始化UI的条件的函数，在每次发送前会调用此函数，如果该函数返回true，则把所有UI发送<font color=CornflowerBlue>PER_INIT_UI_TIMES</font>次ADD，函数返回false则正常更新UI。
   
       ```C
       bool Init_Ui_Condition()
