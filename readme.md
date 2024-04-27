@@ -1,4 +1,4 @@
-# Priority_UI
+# :smirk: Priority_UI
 
 - [实现的功能](#实现的功能)
 - [实现的方法](#实现的方法)
@@ -65,19 +65,19 @@
       ```C
       void client_info_update(void)
       {
-      	switch(judge.game_robot_status.robot_id)
-      	{
-      	  case 1:
-      		  client_info.robot_id = 1;
-      		  client_info.client_id = 0x0101;
-      		  break;
-      		case 101:
-      		  client_info.robot_id = 101;
-      		  client_info.client_id = 0x0165;
-      		  break;
-      	  default:
-      		  break;
-      	}
+        switch(judge.game_robot_status.robot_id)
+       {
+          case 1:
+            client_info.robot_id = 1;
+            client_info.client_id = 0x0101;
+            break;
+          case 101:
+            client_info.robot_id = 101;
+            client_info.client_id = 0x0165;
+            break;
+          default:
+            break;
+        }
       }
       ``` 
     	***
@@ -132,7 +132,7 @@
       }
       ```
     	***
-  - **配置 <font color=#519aba>ui.c</font>**
+  - **配置 <font color=#519aba> ui.c </font>**
   1. 定义一个动态ui结构体和一个不变ui结构体配置初始UI信息
       - operate_type（操作类型）配置提示：
         - 对于不变UI，可以不配置operate_type
