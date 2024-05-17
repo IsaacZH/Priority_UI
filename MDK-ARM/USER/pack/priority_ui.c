@@ -2,7 +2,7 @@
  * @file priority_ui.c
  * @author Isaac (1812924685@qq.com)
  * @brief 通过优先队列实现UI优先级调度
- * @version 0.1
+ * @version 1.11
  * @date 2024-04-14
  * 
  * @copyright Copyright (c) 2024
@@ -59,7 +59,8 @@ bool Init_Ui_Condition()
     /*合并两个有序链表*/Node_u *SortedMerge(Node_u *a, Node_u *b);     
     /*将链表分成两半*/void FrontBackSplit(Node_u *source, Node_u **frontRef, Node_u **backRef);
     /*使用分治算法来对链表进行排序*/void mergeSort(Node_u **headRef);    
-    /*将链表中优先级高的ui结构体存储到一个数组中*/ui_status_e Store_High_Priority_UI(Node_u* dynamic_list_head,Node_u* const_list_head,ui_info_t* graphic_priority_buffer, ui_info_t* character_priority_buffer, ui_send_mode_e *ui_send_mode); 
+    /*将链表中优先级高的ui结构体存储到一个数组中*/ui_status_e Store_High_Priority_UI(Node_u* dynamic_list_head,Node_u* const_list_head,ui_info_t* graphic_priority_buffer, ui_info_t* character_priority_buffer, uint8_t* ui_graphic_buffer_num,ui_send_mode_e *ui_send_mode);
+
 
 // 初始化链表函数
     /*初始化优先队列*/ui_status_e Init_Priority_LinkedList(Node_u** headRef, ui_info_t *ui_input, uint8_t num); 
@@ -411,10 +412,15 @@ ui_status_e Init_Type_LinkedLists(Node_u** graphic_link, Node_u** char_link, ui_
  * @param dynamic_list_head 动态UI链表的头节点
  * @param const_list_head 不变UI链表的头节点
  * @param graphic_buffer 存储ui结构体的数组
+ * @param character_buffer 存储字符ui结构体的数组
+ * @param ui_graphic_buffer_num 图形UI缓存个数
+ * @param ui_send_mode 发送模式 
  * @return ui_status_e UI_ERROR：链表为空,没有初始化链表
  */
-ui_status_e Store_High_Priority_UI(Node_u* dynamic_list_head,Node_u* const_list_head,ui_info_t* graphic_priority_buffer, ui_info_t* character_priority_buffer, ui_send_mode_e *ui_send_mode)
+ui_status_e Store_High_Priority_UI(Node_u* dynamic_list_head,Node_u* const_list_head,ui_info_t* graphic_priority_buffer, ui_info_t* character_priority_buffer, uint8_t* ui_graphic_buffer_num,ui_send_mode_e *ui_send_mode)
 {
+  *ui_graphic_buffer_num = 0;//图形UI缓存个数清零
+
   uint8_t graphic_cnt = 0;
   uint8_t buffer_size = 7;
   Node_u* dynamic_list_cursor = dynamic_list_head;
@@ -435,7 +441,7 @@ ui_status_e Store_High_Priority_UI(Node_u* dynamic_list_head,Node_u* const_list_
   {
     if (dynamic_list_cursor != NULL)
     {
-      character_priority_buffer = dynamic_list_cursor->ui;
+      *character_priority_buffer = *dynamic_list_cursor->ui;
       dynamic_list_cursor->ui->sent_state = MESSAGE_SENT;
       *ui_send_mode = SEND_CHAR_MODE;
       return UI_OK;
@@ -452,6 +458,7 @@ ui_status_e Store_High_Priority_UI(Node_u* dynamic_list_head,Node_u* const_list_
         graphic_priority_buffer[graphic_cnt] = *(dynamic_list_cursor->ui);//将当前节点的ui信息存储到数组中
         dynamic_list_cursor->ui->sent_state = MESSAGE_SENT;
         graphic_cnt++;//数组下标自增
+        (*ui_graphic_buffer_num)++;//图形UI缓存个数自增
       }
       else if (dynamic_list_cursor->ui->ui_config.priority == HIGH_PRIORITY)//如果当前节点为字符且优先级为高
       {
@@ -465,7 +472,7 @@ ui_status_e Store_High_Priority_UI(Node_u* dynamic_list_head,Node_u* const_list_
             dynamic_list_cursor = dynamic_list_cursor->next;
           }
           //把要发送的字符信息存入buffer
-          character_priority_buffer = dynamic_list_cursor->ui;
+          *character_priority_buffer = *dynamic_list_cursor->ui;
           dynamic_list_cursor->ui->sent_state = MESSAGE_SENT;
           *ui_send_mode = SEND_CHAR_MODE;
           return UI_OK;//发送字符
@@ -483,7 +490,7 @@ ui_status_e Store_High_Priority_UI(Node_u* dynamic_list_head,Node_u* const_list_
             dynamic_list_cursor = dynamic_list_cursor->next;
           }
           //把要发送的字符信息存入buffer
-          character_priority_buffer = dynamic_list_cursor->ui;
+          *character_priority_buffer = *dynamic_list_cursor->ui;
           dynamic_list_cursor->ui->sent_state = MESSAGE_SENT;
           *ui_send_mode = SEND_CHAR_MODE;
           return UI_OK;//发送字符
@@ -508,6 +515,7 @@ ui_status_e Store_High_Priority_UI(Node_u* dynamic_list_head,Node_u* const_list_
         graphic_priority_buffer[graphic_cnt] = *(const_list_cursor->ui);//将当前节点的ui信息存储到数组中
         graphic_priority_buffer[graphic_cnt].ui_config.operate_type = ADD;
         graphic_cnt++;//数组下标自增
+        (*ui_graphic_buffer_num)++;//图形UI缓存个数自增
       }
       //如果下一个节点为空，退出循环
       if(const_list_cursor->next == NULL)
@@ -728,6 +736,7 @@ ui_info_t graphic_priority_buffer[7]; // 优先级最高的7个图形
 ui_info_t character_priority_buffer;  // 优先级最高的字符
 
 ui_send_mode_e ui_send_mode; // 发送模式
+uint8_t ui_graphic_buffer_num = 0;   // 图形UI缓存个数
 
 /**
  * @brief 初始化UI链表 在外部调用 一定要在Ui_Send之前调用
@@ -769,7 +778,7 @@ ui_status_e Ui_Send_Normal()
   mergeSort(&dynamic_list_head);
   //将优先级最高的UI信息存储到数组中
   
-  if (Store_High_Priority_UI(dynamic_list_head, const_list_head, graphic_priority_buffer, &character_priority_buffer, &ui_send_mode) == UI_ERROR)
+  if (Store_High_Priority_UI(dynamic_list_head, const_list_head, graphic_priority_buffer, &character_priority_buffer, &ui_graphic_buffer_num,&ui_send_mode) == UI_ERROR)
   {
     return UI_ERROR; // 没有初始化链表
   }
@@ -781,7 +790,7 @@ ui_status_e Ui_Send_Normal()
     client_send_char(character_tx_buffer);
     break;
   case SEND_GRAPHIC_MODE:
-    graphic_tx_buffer = Process_Graphic_To_Buffer(graphic_priority_buffer, 7, 0);
+    graphic_tx_buffer = Process_Graphic_To_Buffer(graphic_priority_buffer, ui_graphic_buffer_num, 0);
     client_send_seven_graphic(graphic_tx_buffer);
     break;
   default:
@@ -852,12 +861,14 @@ ui_status_e Ui_Send_Add()
       {
         graphic_info_buffer[i] = *graphic_list_cursor->ui;
         is_send_graphic_finish_flag = true;
+        ui_graphic_buffer_num = i + 1;
         break;
       }
       graphic_info_buffer[i] = *graphic_list_cursor->ui;
       graphic_list_cursor = graphic_list_cursor->next;
+      ui_graphic_buffer_num = i + 1;
     }
-    graphic_tx_buffer = Process_Graphic_To_Buffer(graphic_info_buffer, 7, 1);
+    graphic_tx_buffer = Process_Graphic_To_Buffer(graphic_info_buffer, ui_graphic_buffer_num, 1);
     client_send_seven_graphic(graphic_tx_buffer);
     return UI_BUSY;
   }
