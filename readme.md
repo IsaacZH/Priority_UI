@@ -85,7 +85,7 @@ UI链表初始化在任务开始前完成（main.c中调用），后续的UI更�
 - 把priority_ui.c中send_test置1就初始化UI，置0就正常更新UI
 - 更改ui.c中标志位来切换UI显示的信息
 
-https://raw.githubusercontent.com/IsaacZH/FigureBed/master/UI%E8%AE%BE%E8%AE%A1%E5%99%A8%E6%A8%A1%E6%8B%9F%E5%B1%95%E7%A4%BA.mp4
+https://github.com/user-attachments/assets/55c63381-9b24-4157-a83d-7a4e43605b65
 
  
 ## 移植方法
