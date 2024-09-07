@@ -7,6 +7,10 @@
   - [配置发送缓存](#配置发送缓存)
   - [发送UI](#发送UI)
   - [更新UI信息](#更新UI信息)
+- [示例](#示例)
+  - [代码结构](#代码结构)
+  - [流程图](#流程图)
+  - [示例代码介绍](#示例代码介绍) 
 - [移植方法](#移植方法)
   - [配置 ui_protocol.c](#配置-ui_protocolc)
   - [配置 priority_ui.c](#配置-priority_uic)
@@ -44,8 +48,48 @@
   ***
 - 更新UI信息：
 
-  更改对应结构体的内容，然后调用更新UI函数来更新现在的发送状态和更新的Tick。 
+  更改对应结构体的内容，然后调用更新UI函数来更新现在的发送状态和更新的Tick。
+
+# 示例
+
+## 代码结构
+  
+    MDK-ARM/USER
+    │
+    ├── Alog----------------------------数学库     
+    │
+    ├── pack----------------------------包
+    │
+    ├── drive---------------------------驱动     
+    │
+    ├── config--------------------------配置     
+    │
+    ├── protocol------------------------协议 
+    │   │ 
+    │   ├── judge_protocol.c---裁判系统协议：解包裁判系统信息
+    │   │ 
+    │   └── ui_protocol.c------UI协议：打包UI
+    │
+    ├── my_task-------------------------FreeRTOS     
+    │
+    └── control-------------------------控制
+        │ 
+        └── ui.c----更新UI信息
+
+## 流程图
+![](https://mermaid.ink/img/pako:eNpdku9v0kAYx_-V5l5Bsv0DvDBhK2gnwxezL7RdmpMWaEZb7I-oISQsGQrZELUKRKbZYuKMJoyYZRlo3T_TO9b_wutdR9C-aO557vP9PnfPPQ1QslQNZEC5Zj0rVaHtcg952eTI53hPKjasVzkD6iZLZVOCqbuKqCsF3XHT3Pr6He65hDqf0NkhOhqg8Ti8-h75f25Ov-0yhWaq_7m50NljqY0UMdohRDr22Wzg0Tl68xV1puH8Jeq_jVr7eHgZDS-aDN8k5biiRYturKQeaQ7N8UuD5DiikCj5VSx3W1XJqmp6BUis88v9omUbsEYQBt1NiYIimGVLEesqdDV2_XsSHl_gwVQUFr98_PkgDPzFx4Pw-hTvn-9SQkjlzKee5mlx3_KWTc11s8L0D6SbyRQFH5gLkbI7o9llnHk_Sxpx8gpdD8Ogl7Q1R7VbEu628HFXFKJ2bxFMsjyP_V4YHCdUnlL3JXwyw71J-HuE2p3F_Ay_fofmfSJiD0WhghS1uqg_iH6Mlhw5jCgkVuy_TQr66KgtCqsXLErh1U_U_8KOmggKdGs7EW79E9GhYMt4tuhePBZgDRga6bmukoFsxIAM3KpmaDLIkKUK7T0ZyGaTcNBzrZ0XZglkXNvT1oBteZUqyJRhzSGRRx-I1yEZOWOZrUPzsWXdxs2_3ec5FA?type=png)
+
+## 示例代码介绍
+UI链表初始化在任务开始前完成（main.c中调用），后续的UI更新函数在务中调用。使用的MCU是stm32F407，代码由Cubemx生成。可以先通过南航开源的UI设计器中串口模拟的功能来验证代码是否正常跑通，在示例工程的控制层ui.c绘制了一些UI，正常运行的话效果如下。
+
+- 把priority_ui.c中send_test置1就初始化UI，置0就正常更新UI
+- 更改ui.c中标志位来切换UI显示的信息
+
+https://raw.githubusercontent.com/IsaacZH/FigureBed/master/UI%E8%AE%BE%E8%AE%A1%E5%99%A8%E6%A8%A1%E6%8B%9F%E5%B1%95%E7%A4%BA.mp4
+
+ 
 ## 移植方法
+要移植的文件可以从release中下载
   - 需要移植的文件：
     - <font color=#519aba>ui_protocol.c</font> ----- UI的裁判系统协议文件
     - <font color= #a074c4>ui_protocol.h</font>  
@@ -194,6 +238,5 @@
     - 链表一个节点的大小为8字节，四个链表的大小一共为：[8* 2* (动态UI个数+不变UI个数)] 字节
     - Heap的大小至少为上面所需大小的两倍，空间不够时申请内存就会失败，初始化链表函数会返回UI_ERROR  
     - 在CubeMX->Project Manger->Minimum Heap Size 中调整Heap大小
-  
 # 附录
  [UI配置示例](UI_Configuration_Example.md)

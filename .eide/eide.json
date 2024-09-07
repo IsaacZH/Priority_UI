@@ -2,9 +2,7 @@
   "name": "MY_ENGINEER",
   "type": "ARM",
   "dependenceList": [],
-  "srcDirs": [
-    ".eide/deps"
-  ],
+  "srcDirs": [],
   "virtualFolder": {
     "name": "<virtual_root>",
     "files": [],
@@ -544,6 +542,7 @@
       "custom_dep": {
         "name": "default",
         "incList": [
+          ".",
           "Core/Inc",
           "Drivers/STM32F4xx_HAL_Driver/Inc",
           "Drivers/STM32F4xx_HAL_Driver/Inc/Legacy",
@@ -563,20 +562,48 @@
           "Drivers/CMSIS-DSP/Include",
           ".cmsis/include",
           "MDK-ARM/RTE/_MY_ENGINEER",
-          ".eide/deps",
           "MDK-ARM/USER/pack",
           "MDK-ARM/USER/protocol/crc"
         ],
         "libList": [],
-        "sourceDirList": [],
         "defineList": [
           "USE_HAL_DRIVER",
           "STM32F407xx",
           "ARM_MATH_CM4",
           "__FPU_PRESENT"
         ]
+      },
+      "builderOptions": {
+        "AC6": {
+          "version": 3,
+          "beforeBuildTasks": [],
+          "afterBuildTasks": [],
+          "global": {
+            "use-microLIB": true,
+            "output-debug-info": "enable"
+          },
+          "c/cpp-compiler": {
+            "optimization": "level-0",
+            "language-c": "c99",
+            "language-cpp": "c++03",
+            "link-time-optimization": false,
+            "one-elf-section-per-function": true,
+            "short-enums#wchar": true,
+            "warnings": "ac5-like-warnings"
+          },
+          "asm-compiler": {
+            "$use": "asm-auto"
+          },
+          "linker": {
+            "output-format": "elf",
+            "misc-controls": "--diag_suppress=L6329",
+            "xo-base": "",
+            "ro-base": "",
+            "rw-base": ""
+          }
+        }
       }
     }
   },
-  "version": "3.3"
+  "version": "3.5"
 }

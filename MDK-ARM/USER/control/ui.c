@@ -248,6 +248,10 @@ ui_info_t const_ui_info [3] =
   },
 };
 
+
+/**
+  @brief: 初始化UI链表 main.c中调用
+ */
 void My_Ui_Init(void)
 {
   Init_Ui_List(dynamic_ui_info, sizeof(dynamic_ui_info)/sizeof(ui_info_t),const_ui_info, sizeof(const_ui_info)/sizeof(ui_info_t));
