@@ -19,7 +19,9 @@
 - [UI配置示例](#附录) 
 
 # 实现的功能
-- 通过优先级调度算法，管理每一个包要发送的UI内容。用户只需要初始化UI的信息，定义UI的优先级，并更新UI的内容，Priority_UI会自动调度UI的发送顺序。
+- 通过优先级调度算法，管理每一个包要发送的UI内容。用户只需要初始化UI的信息，定义UI的优先级，并更新UI的内容，Priority_UI会自动调度UI的发送顺序。能在裁判系统有限的带宽下实现比较高的UI刷新率，下面是场上的第一视角UI展示。
+
+https://github.com/user-attachments/assets/aa1edf9d-3b19-4ab0-a49a-d09e68fa1cb1
 # 实现的方法
 - 初始化链表：
   - 把每个UI信息结构体的地址存入四个链表中：动态UI链表、不变UI链表、图形UI链表、字符UI链表
@@ -50,7 +52,7 @@
 
   更改对应结构体的内容，然后调用更新UI函数来更新现在的发送状态和更新的Tick。
 
-# 示例
+# 示例代码
 
 ## 代码结构
   
@@ -80,7 +82,7 @@
 ![](https://mermaid.ink/img/pako:eNpdku9v0kAYx_-V5l5Bsv0DvDBhK2gnwxezL7RdmpMWaEZb7I-oISQsGQrZELUKRKbZYuKMJoyYZRlo3T_TO9b_wutdR9C-aO557vP9PnfPPQ1QslQNZEC5Zj0rVaHtcg952eTI53hPKjasVzkD6iZLZVOCqbuKqCsF3XHT3Pr6He65hDqf0NkhOhqg8Ti8-h75f25Ov-0yhWaq_7m50NljqY0UMdohRDr22Wzg0Tl68xV1puH8Jeq_jVr7eHgZDS-aDN8k5biiRYturKQeaQ7N8UuD5DiikCj5VSx3W1XJqmp6BUis88v9omUbsEYQBt1NiYIimGVLEesqdDV2_XsSHl_gwVQUFr98_PkgDPzFx4Pw-hTvn-9SQkjlzKee5mlx3_KWTc11s8L0D6SbyRQFH5gLkbI7o9llnHk_Sxpx8gpdD8Ogl7Q1R7VbEu628HFXFKJ2bxFMsjyP_V4YHCdUnlL3JXwyw71J-HuE2p3F_Ay_fofmfSJiD0WhghS1uqg_iH6Mlhw5jCgkVuy_TQr66KgtCqsXLErh1U_U_8KOmggKdGs7EW79E9GhYMt4tuhePBZgDRga6bmukoFsxIAM3KpmaDLIkKUK7T0ZyGaTcNBzrZ0XZglkXNvT1oBteZUqyJRhzSGRRx-I1yEZOWOZrUPzsWXdxs2_3ec5FA?type=png)
 
 ## 示例代码介绍
-UI链表初始化在任务开始前完成（main.c中调用），后续的UI更新函数在务中调用。使用的MCU是stm32F407，代码由Cubemx生成。可以先通过南航开源的UI设计器中串口模拟的功能来验证代码是否正常跑通，在示例工程的控制层ui.c绘制了一些UI，正常运行的话效果如下。
+UI链表初始化在任务开始前完成（main.c中调用），后续的UI更新函数在务中调用。MCU是stm32F407，代码由Cubemx生成。可以先通过南航开源的UI设计器中串口模拟的功能来验证代码是否正常跑通，在示例工程的控制层ui.c绘制了一些UI，正常运行的话效果如下。
 
 - 把priority_ui.c中send_test置1就初始化UI，置0就正常更新UI
 - 更改ui.c中标志位来切换UI显示的信息
