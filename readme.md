@@ -146,7 +146,8 @@ https://github.com/user-attachments/assets/55c63381-9b24-4157-a83d-7a4e43605b65
             break;
         }
       }
-      ``` 
+      ```
+      如果是用别的底层需要自行更换CRC和串口发送相关的外部函数
     	***
   - **配置 <font color=#519aba>priority_ui.c</font>** 
   1. 使能自动命名功能（可选）：如果你不想自己配置图形名称，可以在此处使能自动命名功能。
@@ -177,13 +178,13 @@ https://github.com/user-attachments/assets/55c63381-9b24-4157-a83d-7a4e43605b65
       #define SEND_INTERVAL  100 // 100ms发一次
       ```
 
-  5. 每次初始化的次数
+  5. 每次初始化的次数，一般设定为１就行，丢包率很低。
 
       ```C
       #define PER_INIT_UI_TIMES  1   // 每次初始化的UI次数
       ```
 
-  6. 定义初始化UI的条件的函数，在每次发送前会调用此函数，如果该函数返回true，则把所有UI发送<font color=CornflowerBlue>PER_INIT_UI_TIMES</font>次ADD，函数返回false则正常更新UI。
+  6. 定义初始化UI的条件的函数，在每次发送前会调用此函数，如果该函数返回true，则把所有UI以ADD操作发送<font color=CornflowerBlue>PER_INIT_UI_TIMES</font>次，函数返回false则正常更新UI。比如PER_INIT_UI_TIMES设定为1，检测到打开遥控器就返回一次true，就实现了每次开控就初始化UI的效果。
   
       ```C
       bool Init_Ui_Condition()
