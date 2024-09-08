@@ -1,4 +1,24 @@
+<div align="center">
+  
 # :smirk: Priority_UI
+[![GitHub release](https://img.shields.io/github/v/release/IsaacZH/Priority_UI)](https://github.com/IsaacZH/Priority_UI/releases/latest)
+<a href="./LICENSE"><img alt="License" src="https://img.shields.io/badge/License-MIT-yellow"></a>
+[![Website](https://img.shields.io/badge/Website-RobotPilots-blue)](https://robotpilots.com/)
+[![Email](https://img.shields.io/badge/Email-1812924685@qq.com-green)](mailto:1812924685@qq.com)
+
+<p align="center">
+  <!-- <img src=".github/NEU.jpg" width="300"/> -->
+
+  <img src="https://raw.githubusercontent.com/IsaacZH/FigureBed/master/batman_wallpaper.png" width="800"/>
+</p>
+
+</div>
+
+<br>
+
+--------
+
+<br>
 
 - [实现的功能](#实现的功能)
 - [实现的方法](#实现的方法)
@@ -16,7 +36,8 @@
   - [配置 priority_ui.c](#配置-priority_uic)
   - [配置 ui.c](#配置-uic)
   - [确保Heap大小足够存放所有UI信息](#确保heap大小足够存放所有ui信息)
-- [UI配置示例](#附录) 
+- [优化方向](#优化方向)
+- [UI配置示例](#附录)
 
 # 实现的功能
 - 通过优先级调度算法，管理每一个包要发送的UI内容。用户只需要初始化UI的信息，定义UI的优先级，并更新UI的内容，Priority_UI会自动调度UI的发送顺序。能在裁判系统有限的带宽下实现比较高的UI刷新率，下面是场上的第一视角UI展示。
@@ -240,5 +261,7 @@ https://github.com/user-attachments/assets/55c63381-9b24-4157-a83d-7a4e43605b65
     - 链表一个节点的大小为8字节，四个链表的大小一共为：[8* 2* (动态UI个数+不变UI个数)] 字节
     - Heap的大小至少为上面所需大小的两倍，空间不够时申请内存就会失败，初始化链表函数会返回UI_ERROR  
     - 在CubeMX->Project Manger->Minimum Heap Size 中调整Heap大小
+# 优化方向
+本算法为了降低空间复杂度，没有检测用户是否更改了UI的结构体的内容，需要用户自己添加到发送队列中。后续可以尝试自动检测UI信息更改的时间戳，这样就不需要自己来检测跳变并且添加到发送队列了。
 # 附录
  [UI配置示例](UI_Configuration_Example.md)
