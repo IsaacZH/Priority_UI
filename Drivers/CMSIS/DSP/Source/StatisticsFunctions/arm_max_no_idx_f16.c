@@ -95,7 +95,7 @@ void arm_max_no_idx_f16(
         newVal = *pSrc++;
 
         /* compare for the maximum value */
-        if ((_Float16)maxValue < (_Float16)newVal)
+        if (maxValue < newVal)
         {
             /* Update the maximum value and it's index */
             maxValue = newVal;
@@ -122,7 +122,7 @@ void arm_max_no_idx_f16(
        newVal = *pSrc++;
    
        /* compare for the maximum value */
-       if ((_Float16)maxValue < (_Float16)newVal)
+       if (maxValue < newVal)
        {
            /* Update the maximum value and it's index */
            maxValue = newVal;

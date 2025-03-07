@@ -97,7 +97,7 @@ float16_t arm_entropy_f16(const float16_t * pSrcA,uint32_t blockSize)
     while(blkCnt > 0)
     {
        p = *pSrcA++;
-       accum += p * (_Float16)logf((float32_t)p);
+       accum += p * logf(p);
        
        blkCnt--;
     
@@ -122,7 +122,7 @@ float16_t arm_entropy_f16(const float16_t * pSrcA,uint32_t blockSize)
     while(blkCnt > 0)
     {
        p = *pIn++;
-       accum += p * (_Float16)logf((float32_t)p);
+       accum += p * logf(p);
        
        blkCnt--;
     

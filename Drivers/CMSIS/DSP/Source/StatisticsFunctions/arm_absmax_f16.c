@@ -152,7 +152,7 @@ void arm_absmax_f16(
   outIndex = 0U;                                                                                            \
   /* Load first input value that act as reference value for comparision */                                  \
   out = *pSrc++;                                                                                            \
-  out = ((_Float16)out > 0.0f16) ? out : -(_Float16)out;                                                                             \
+  out = (out > 0.0f16) ? out : -out;                                                                             \
   /* Initialize index of extrema value. */                                                                  \
   index = 0U;                                                                                               \
                                                                                                             \
@@ -163,9 +163,9 @@ void arm_absmax_f16(
   {                                                                                                         \
     /* Initialize cur_absmax to next consecutive values one by one */                                         \
     cur_absmax = *pSrc++;                                                                                     \
-    cur_absmax = ((_Float16)cur_absmax > 0.0f16) ? cur_absmax : -(_Float16)cur_absmax;                                                                 \
+    cur_absmax = (cur_absmax > 0.0f16) ? cur_absmax : -cur_absmax;                                                                 \
     /* compare for the extrema value */                                                                     \
-    if ((_Float16)cur_absmax > (_Float16)out)                                                                         \
+    if (cur_absmax > out)                                                                         \
     {                                                                                                       \
       /* Update the extrema value and it's index */                                                         \
       out = cur_absmax;                                                                                       \
@@ -173,24 +173,24 @@ void arm_absmax_f16(
     }                                                                                                       \
                                                                                                             \
     cur_absmax = *pSrc++;                                                                                     \
-    cur_absmax = ((_Float16)cur_absmax > 0.0f16) ? cur_absmax : -(_Float16)cur_absmax;                                                                 \
-    if ((_Float16)cur_absmax > (_Float16)out)                                                                         \
+    cur_absmax = (cur_absmax > 0.0f16) ? cur_absmax : -cur_absmax;                                                                 \
+    if (cur_absmax > out)                                                                         \
     {                                                                                                       \
       out = cur_absmax;                                                                                       \
       outIndex = index + 2U;                                                                                \
     }                                                                                                       \
                                                                                                             \
     cur_absmax = *pSrc++;                                                                                     \
-    cur_absmax = ((_Float16)cur_absmax > 0.0f16) ? cur_absmax : -(_Float16)cur_absmax;                                                                 \
-    if ((_Float16)cur_absmax > (_Float16)out)                                                                          \
+    cur_absmax = (cur_absmax > 0.0f16) ? cur_absmax : -cur_absmax;                                                                 \
+    if (cur_absmax > out)                                                                          \
     {                                                                                                       \
       out = cur_absmax;                                                                                       \
       outIndex = index + 3U;                                                                                \
     }                                                                                                       \
                                                                                                             \
     cur_absmax = *pSrc++;                                                                                     \
-    cur_absmax = ((_Float16)cur_absmax > 0.0f16) ? cur_absmax : -(_Float16)cur_absmax;                                                                 \
-    if ((_Float16)cur_absmax > (_Float16)out)                                                                          \
+    cur_absmax = (cur_absmax > 0.0f16) ? cur_absmax : -cur_absmax;                                                                 \
+    if (cur_absmax > out)                                                                          \
     {                                                                                                       \
       out = cur_absmax;                                                                                       \
       outIndex = index + 4U;                                                                                \
@@ -209,8 +209,8 @@ void arm_absmax_f16(
   while (blkCnt > 0U)                                                                                       \
   {                                                                                                         \
     cur_absmax = *pSrc++;                                                                                     \
-    cur_absmax = ((_Float16)cur_absmax > 0.0f16) ? cur_absmax : -(_Float16)cur_absmax;                                                                 \
-    if ((_Float16)cur_absmax > (_Float16)out)                                                                         \
+    cur_absmax = (cur_absmax > 0.0f16) ? cur_absmax : -cur_absmax;                                                                 \
+    if (cur_absmax > out)                                                                         \
     {                                                                                                       \
       out = cur_absmax;                                                                                       \
       outIndex = blockSize - blkCnt;                                                                        \
@@ -238,7 +238,7 @@ void arm_absmax_f16(
   outIndex = 0U;
 
   /* Load first input value that act as reference value for comparision */
-  out = (_Float16)fabsf((float32_t)*pSrc++);
+  out = fabsf(*pSrc++);
 
   /* Initialize blkCnt with number of samples */
   blkCnt = (blockSize - 1U);
@@ -246,10 +246,10 @@ void arm_absmax_f16(
   while (blkCnt > 0U)
   {
     /* Initialize maxVal to the next consecutive values one by one */
-    maxVal = (_Float16)fabsf((float32_t)*pSrc++);
+    maxVal = fabsf(*pSrc++);
 
     /* compare for the maximum value */
-    if ((_Float16)out < (_Float16)maxVal)
+    if (out < maxVal)
     {
       /* Update the maximum value and it's index */
       out = maxVal;

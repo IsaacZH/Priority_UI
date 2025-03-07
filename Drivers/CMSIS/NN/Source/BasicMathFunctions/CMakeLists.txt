@@ -1,5 +1,5 @@
 #
-# Copyright (c) 2019-2021 Arm Limited.
+# Copyright (c) 2019-2021 Arm Limited. All rights reserved.
 #
 # SPDX-License-Identifier: Apache-2.0
 #
@@ -16,5 +16,16 @@
 # limitations under the License.
 #
 
+project(CMSISNNBasicMaths)
+
 file(GLOB SRC "./*_*.c")
-target_sources(cmsis-nn PRIVATE ${SRC})
+
+add_library(CMSISNNBasicMaths STATIC ${SRC})
+
+### Includes
+target_include_directories(CMSISNNBasicMaths PUBLIC "${NN}/Include")
+target_include_directories(CMSISNNBasicMaths PUBLIC "${ROOT}/CMSIS/Core/Include")
+target_include_directories(CMSISNNBasicMaths PUBLIC "${ROOT}/CMSIS/DSP/Include")
+
+
+
