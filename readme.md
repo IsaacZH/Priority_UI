@@ -83,7 +83,7 @@ https://github.com/user-attachments/assets/aa1edf9d-3b19-4ab0-a49a-d09e68fa1cb1
     │
     ├── pack----------------------------包
     │   │ 
-    │   └── ui_protocol.c------UI协议：打包UI
+    │   └── priority_ui.c ------ 优先级UI的包
     │
     ├── Driver---------------------------驱动     
     │
