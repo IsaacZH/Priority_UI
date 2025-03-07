@@ -141,20 +141,20 @@ void arm_cmplx_mult_real_f16(
 
     in = *pSrcReal++;
     /* store result in destination buffer. */
-    *pCmplxDst++ = (_Float16)*pSrcCmplx++ * (_Float16)in;
-    *pCmplxDst++ = (_Float16)*pSrcCmplx++ * (_Float16)in;
+    *pCmplxDst++ = *pSrcCmplx++ * in;
+    *pCmplxDst++ = *pSrcCmplx++ * in;
 
     in = *pSrcReal++;
-    *pCmplxDst++ = (_Float16)*pSrcCmplx++ * (_Float16)in;
-    *pCmplxDst++ = (_Float16)*pSrcCmplx++ * (_Float16)in;
+    *pCmplxDst++ = *pSrcCmplx++ * in;
+    *pCmplxDst++ = *pSrcCmplx++ * in;
 
     in = *pSrcReal++;
-    *pCmplxDst++ = (_Float16)*pSrcCmplx++ * (_Float16)in;
-    *pCmplxDst++ = (_Float16)*pSrcCmplx++ * (_Float16)in;
+    *pCmplxDst++ = *pSrcCmplx++ * in;
+    *pCmplxDst++ = *pSrcCmplx++ * in;
 
     in = *pSrcReal++;
-    *pCmplxDst++ = (_Float16)*pSrcCmplx++ * (_Float16)in;
-    *pCmplxDst++ = (_Float16)*pSrcCmplx++ * (_Float16)in;
+    *pCmplxDst++ = *pSrcCmplx++* in;
+    *pCmplxDst++ = *pSrcCmplx++ * in;
 
     /* Decrement loop counter */
     blkCnt--;
@@ -177,8 +177,8 @@ void arm_cmplx_mult_real_f16(
 
     in = *pSrcReal++;
     /* store result in destination buffer. */
-    *pCmplxDst++ = (_Float16)*pSrcCmplx++ * (_Float16)in;
-    *pCmplxDst++ = (_Float16)*pSrcCmplx++ * (_Float16)in;
+    *pCmplxDst++ = *pSrcCmplx++ * in;
+    *pCmplxDst++ = *pSrcCmplx++ * in;
 
     /* Decrement loop counter */
     blkCnt--;

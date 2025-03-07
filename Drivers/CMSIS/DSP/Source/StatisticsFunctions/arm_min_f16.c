@@ -165,7 +165,7 @@ void arm_min_f16(
     minVal = *pSrc++;
 
     /* compare for the minimum value */
-    if ((_Float16)out > (_Float16)minVal)
+    if (out > minVal)
     {
       /* Update the minimum value and it's index */
       out = minVal;
@@ -173,21 +173,21 @@ void arm_min_f16(
     }
 
     minVal = *pSrc++;
-    if ((_Float16)out > (_Float16)minVal)
+    if (out > minVal)
     {
       out = minVal;
       outIndex = index + 2U;
     }
 
     minVal = *pSrc++;
-    if ((_Float16)out > (_Float16)minVal)
+    if (out > minVal)
     {
       out = minVal;
       outIndex = index + 3U;
     }
 
     minVal = *pSrc++;
-    if ((_Float16)out > (_Float16)minVal)
+    if (out > minVal)
     {
       out = minVal;
       outIndex = index + 4U;
@@ -215,7 +215,7 @@ void arm_min_f16(
     minVal = *pSrc++;
 
     /* compare for the minimum value */
-    if ((_Float16)out > (_Float16)minVal)
+    if (out > minVal)
     {
       /* Update the minimum value and it's index */
       out = minVal;

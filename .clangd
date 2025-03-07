@@ -1,6 +1,0 @@
-CompileFlags:
-    Add:
-        - -IC:\Keil_v5\ARM\ARMCLANG/include
-        - -IC:\Keil_v5\ARM\ARMCLANG/include/libcxx
-    CompilationDatabase: ./build/MY_ENGINEER
-    Compiler: C:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe

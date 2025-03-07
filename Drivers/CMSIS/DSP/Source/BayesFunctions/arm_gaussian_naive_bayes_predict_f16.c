@@ -33,6 +33,7 @@
 #include <limits.h>
 #include <math.h>
 
+#define PI_F 3.1415926535897932384626433832795f16
 
 /**
  * @addtogroup groupBayes
@@ -131,7 +132,7 @@ uint32_t arm_gaussian_naive_bayes_predict_f16(const arm_gaussian_naive_bayes_ins
         tmp = -0.5f16 * (_Float16)vecAddAcrossF16Mve(vacc1);
         tmp -= 0.5f16 * (_Float16)vecAddAcrossF16Mve(vacc2);
 
-        *buffer = (_Float16)tmp + (_Float16)*pLogPrior++;
+        *buffer = tmp + *pLogPrior++;
         buffer++;
     }
 
@@ -175,20 +176,20 @@ uint32_t arm_gaussian_naive_bayes_predict_f16(const arm_gaussian_naive_bayes_ins
         acc2 = 0.0f16;
         for(nbDim = 0; nbDim < S->vectorDimension; nbDim++)
         {
-           sigma = (_Float16)*pSigma + (_Float16)S->epsilon;
-           acc1 += (_Float16)logf(2.0f * PI * (float32_t)sigma);
-           acc2 += ((_Float16)*pIn - (_Float16)*pTheta) * ((_Float16)*pIn - (_Float16)*pTheta) / (_Float16)sigma;
+           sigma = *pSigma + S->epsilon;
+           acc1 += logf(2.0f16 * (_Float16)PI_F * sigma);
+           acc2 += (*pIn - *pTheta) * (*pIn - *pTheta) / sigma;
 
            pIn++;
            pTheta++;
            pSigma++;
         }
 
-        tmp = -0.5f16 * (_Float16)acc1;
-        tmp -= 0.5f16 * (_Float16)acc2;
+        tmp = -0.5f16 * acc1;
+        tmp -= 0.5f16 * acc2;
 
 
-        *buffer = (_Float16)tmp + (_Float16)logf((float32_t)*pPrior++);
+        *buffer = tmp + logf(*pPrior++);
         buffer++;
     }
 

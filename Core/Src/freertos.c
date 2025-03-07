@@ -6,13 +6,12 @@
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; Copyright (c) 2022 STMicroelectronics.
-  * All rights reserved.</center></h2>
+  * Copyright (c) 2024 STMicroelectronics.
+  * All rights reserved.
   *
-  * This software component is licensed by ST under Ultimate Liberty license
-  * SLA0044, the "License"; You may not use this file except in compliance with
-  * the License. You may obtain a copy of the License at:
-  *                             www.st.com/SLA0044
+  * This software is licensed under terms that can be found in the LICENSE file
+  * in the root directory of this software component.
+  * If no LICENSE file comes with this software, it is provided AS-IS.
   *
   ******************************************************************************
   */
@@ -49,9 +48,9 @@
 
 /* USER CODE END Variables */
 osThreadId defaultTaskHandle;
-osThreadId ControlTaskHandle;
-osThreadId HeartBeatTaskHandle;
-osThreadId RealTimeTaskHandle;
+osThreadId Priority_H1Handle;
+osThreadId Priority_H2Handle;
+osThreadId Priority_MHandle;
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
@@ -59,9 +58,9 @@ osThreadId RealTimeTaskHandle;
 /* USER CODE END FunctionPrototypes */
 
 void StartDefaultTask(void const * argument);
-void StartControlTask(void const * argument);
-void StartHeartBeatTask(void const * argument);
-void StartRealTimeTask(void const * argument);
+void Task_H1(void const * argument);
+void Task_H2(void const * argument);
+void Task_M(void const * argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
@@ -112,17 +111,17 @@ void MX_FREERTOS_Init(void) {
   osThreadDef(defaultTask, StartDefaultTask, osPriorityNormal, 0, 128);
   defaultTaskHandle = osThreadCreate(osThread(defaultTask), NULL);
 
-  /* definition and creation of ControlTask */
-  osThreadDef(ControlTask, StartControlTask, osPriorityAboveNormal, 0, 1024);
-  ControlTaskHandle = osThreadCreate(osThread(ControlTask), NULL);
+  /* definition and creation of Priority_H1 */
+  osThreadDef(Priority_H1, Task_H1, osPriorityHigh, 0, 1024);
+  Priority_H1Handle = osThreadCreate(osThread(Priority_H1), NULL);
 
-  /* definition and creation of HeartBeatTask */
-  osThreadDef(HeartBeatTask, StartHeartBeatTask, osPriorityAboveNormal, 0, 256);
-  HeartBeatTaskHandle = osThreadCreate(osThread(HeartBeatTask), NULL);
+  /* definition and creation of Priority_H2 */
+  osThreadDef(Priority_H2, Task_H2, osPriorityHigh, 0, 1024);
+  Priority_H2Handle = osThreadCreate(osThread(Priority_H2), NULL);
 
-  /* definition and creation of RealTimeTask */
-  osThreadDef(RealTimeTask, StartRealTimeTask, osPriorityHigh, 0, 1024);
-  RealTimeTaskHandle = osThreadCreate(osThread(RealTimeTask), NULL);
+  /* definition and creation of Priority_M */
+  osThreadDef(Priority_M, Task_M, osPriorityAboveNormal, 0, 1024);
+  Priority_MHandle = osThreadCreate(osThread(Priority_M), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -148,58 +147,58 @@ void StartDefaultTask(void const * argument)
   /* USER CODE END StartDefaultTask */
 }
 
-/* USER CODE BEGIN Header_StartControlTask */
+/* USER CODE BEGIN Header_Task_H1 */
 /**
-* @brief Function implementing the ControlTask thread.
+* @brief Function implementing the Priority_H1 thread.
 * @param argument: Not used
 * @retval None
 */
-/* USER CODE END Header_StartControlTask */
-__weak void StartControlTask(void const * argument)
+/* USER CODE END Header_Task_H1 */
+__weak void Task_H1(void const * argument)
 {
-  /* USER CODE BEGIN StartControlTask */
+  /* USER CODE BEGIN Task_H1 */
   /* Infinite loop */
   for(;;)
   {
     osDelay(1);
   }
-  /* USER CODE END StartControlTask */
+  /* USER CODE END Task_H1 */
 }
 
-/* USER CODE BEGIN Header_StartHeartBeatTask */
+/* USER CODE BEGIN Header_Task_H2 */
 /**
-* @brief Function implementing the HeartBeatTask thread.
+* @brief Function implementing the Priority_H2 thread.
 * @param argument: Not used
 * @retval None
 */
-/* USER CODE END Header_StartHeartBeatTask */
-__weak void StartHeartBeatTask(void const * argument)
+/* USER CODE END Header_Task_H2 */
+__weak void Task_H2(void const * argument)
 {
-  /* USER CODE BEGIN StartHeartBeatTask */
+  /* USER CODE BEGIN Task_H2 */
   /* Infinite loop */
   for(;;)
   {
     osDelay(1);
   }
-  /* USER CODE END StartHeartBeatTask */
+  /* USER CODE END Task_H2 */
 }
 
-/* USER CODE BEGIN Header_StartRealTimeTask */
+/* USER CODE BEGIN Header_Task_M */
 /**
-* @brief Function implementing the RealTimeTask thread.
+* @brief Function implementing the Priority_M thread.
 * @param argument: Not used
 * @retval None
 */
-/* USER CODE END Header_StartRealTimeTask */
-__weak void StartRealTimeTask(void const * argument)
+/* USER CODE END Header_Task_M */
+__weak void Task_M(void const * argument)
 {
-  /* USER CODE BEGIN StartRealTimeTask */
+  /* USER CODE BEGIN Task_M */
   /* Infinite loop */
   for(;;)
   {
     osDelay(1);
   }
-  /* USER CODE END StartRealTimeTask */
+  /* USER CODE END Task_M */
 }
 
 /* Private application code --------------------------------------------------*/

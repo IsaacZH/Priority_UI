@@ -74,26 +74,26 @@ https://github.com/user-attachments/assets/aa1edf9d-3b19-4ab0-a49a-d09e68fa1cb1
   更改对应结构体的内容，然后调用更新UI函数来更新现在的发送状态和更新的Tick。
 
 # 示例代码
-
+## 硬件
+- RoboMaster C型开发板
+- 上海瓴控科技串口转TTL模块连接开发板4PIN串口
 ## 代码结构
   
-    MDK-ARM/USER
-    │
-    ├── Alog----------------------------数学库     
+    ./Application 
     │
     ├── pack----------------------------包
-    │
-    ├── drive---------------------------驱动     
-    │
-    ├── config--------------------------配置     
-    │
-    ├── protocol------------------------协议 
-    │   │ 
-    │   ├── judge_protocol.c---裁判系统协议：解包裁判系统信息
     │   │ 
     │   └── ui_protocol.c------UI协议：打包UI
     │
-    ├── my_task-------------------------FreeRTOS     
+    ├── Driver---------------------------驱动     
+    │
+    ├── Config--------------------------配置     
+    │
+    ├── protocol------------------------协议 
+    │   │ 
+    │   └── ui_protocol.c------UI协议：打包UI
+    │
+    ├── Task-------------------------FreeRTOS     
     │
     └── control-------------------------控制
         │ 
@@ -103,7 +103,9 @@ https://github.com/user-attachments/assets/aa1edf9d-3b19-4ab0-a49a-d09e68fa1cb1
 ![](https://mermaid.ink/img/pako:eNpdku9v0kAYx_-V5l5Bsv0DvDBhK2gnwxezL7RdmpMWaEZb7I-oISQsGQrZELUKRKbZYuKMJoyYZRlo3T_TO9b_wutdR9C-aO557vP9PnfPPQ1QslQNZEC5Zj0rVaHtcg952eTI53hPKjasVzkD6iZLZVOCqbuKqCsF3XHT3Pr6He65hDqf0NkhOhqg8Ti8-h75f25Ov-0yhWaq_7m50NljqY0UMdohRDr22Wzg0Tl68xV1puH8Jeq_jVr7eHgZDS-aDN8k5biiRYturKQeaQ7N8UuD5DiikCj5VSx3W1XJqmp6BUis88v9omUbsEYQBt1NiYIimGVLEesqdDV2_XsSHl_gwVQUFr98_PkgDPzFx4Pw-hTvn-9SQkjlzKee5mlx3_KWTc11s8L0D6SbyRQFH5gLkbI7o9llnHk_Sxpx8gpdD8Ogl7Q1R7VbEu628HFXFKJ2bxFMsjyP_V4YHCdUnlL3JXwyw71J-HuE2p3F_Ay_fofmfSJiD0WhghS1uqg_iH6Mlhw5jCgkVuy_TQr66KgtCqsXLErh1U_U_8KOmggKdGs7EW79E9GhYMt4tuhePBZgDRga6bmukoFsxIAM3KpmaDLIkKUK7T0ZyGaTcNBzrZ0XZglkXNvT1oBteZUqyJRhzSGRRx-I1yEZOWOZrUPzsWXdxs2_3ec5FA?type=png)
 
 ## 示例代码介绍
-UI链表初始化在任务开始前完成（main.c中调用），后续的UI更新函数在务中调用。MCU是stm32F407，代码由Cubemx生成。可以先通过南航开源的UI设计器中串口模拟的功能来验证代码是否正常跑通，在示例工程的控制层ui.c绘制了一些UI，正常运行的话效果如下。
+UI链表初始化在任务开始前完成（main.c中调用），后续的UI更新函数在务中调用。
+
+可以先通过南航开源的UI设计器中串口模拟的功能来验证代码是否正常跑通，在示例工程的控制层ui.c绘制了一些UI，正常运行的话效果如下。
 
 - 把priority_ui.c中send_test置1就初始化UI，置0就正常更新UI
 - 更改ui.c中标志位来切换UI显示的信息
@@ -130,10 +132,10 @@ https://github.com/user-attachments/assets/55c63381-9b24-4157-a83d-7a4e43605b65
   2. 判断红蓝发配置id
       
       ```C
-      void client_info_update(void)
+      void client_info_update(uint8_t robot_id)
       {
-        switch(judge.game_robot_status.robot_id)
-       {
+        switch(robot_id)
+        {
           case 1:
             client_info.robot_id = 1;
             client_info.client_id = 0x0101;
@@ -218,7 +220,6 @@ https://github.com/user-attachments/assets/55c63381-9b24-4157-a83d-7a4e43605b65
        /*******不变配置*********/
        .ui_config.priority = MID_PRIORITY, // UI优先级(仅动态UI需要配置)
        .ui_config.ui_type = LINE,         // UI内容类型
-       .ui_config.name = "g1",              // 图形名称
        /*******可变配置*********/
        .ui_config.operate_type = MODIFY,    // 操作类型
        .ui_config.layer = 1,                // 图层数，0~9

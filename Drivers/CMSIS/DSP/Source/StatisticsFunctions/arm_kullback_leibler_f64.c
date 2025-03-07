@@ -55,7 +55,7 @@ float64_t arm_kullback_leibler_f64(const float64_t * pSrcA, const float64_t * pS
     pInB = pSrcB;
     blkCnt = blockSize;
 
-    accum = 0.0;
+    accum = 0.0f;
 
     while(blkCnt > 0)
     {
